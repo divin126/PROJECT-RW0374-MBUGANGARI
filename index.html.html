@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RW 374 | Rwanda project Act</title>
+    <script src="./code kwi ca.html_files/saved_resource"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        
+        .hero-gradient {
+           /* Place your image path below (example: 'my-background.jpg') */
+           background: url('top.npj.jpg') center center/cover no-repeat;
+           /* fallback color if image fails to load */
+           background-color: #8cad4e;
+           width: 100vw;
+           margin-left: calc(-50vw + 50%);
+           margin-right: calc(-50vw + 50%);
+        }
+        
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .sticky-header > .container {
+            max-width: 100vw;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .card-gradient {
+            background: linear-gradient(145deg, #19191a 0%, #e9ecef 100%);
+        }
+        .full-width-section {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+        .full-width-bg {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-right: calc(-50vw + 50%);
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25px;
+            height: 100%;
+            width: 4px;
+            background: #0088cc;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 21px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0088cc;
+            border: 3px solid white;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .floating-btn {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+<script>
+// Button grid and detail view logic
+document.addEventListener('DOMContentLoaded', function () {
+    const buttonGrid = document.getElementById('buttonGrid');
+    const detailViews = document.getElementById('detailViews');
+    const detailViewTemplate = document.getElementById('detailViewTemplate');
+    const backToGridBtn = document.getElementById('backToGrid');
+    const detailImg = document.getElementById('detailImg');
+    const detailText = document.getElementById('detailText');
+    // Example data for each button (replace with your real data/images)
+    const details = [
+        { img: 'wowu.', text: 'Empowering youth with skills and mentorship for a brighter future.', bg: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) ' },
+        { img: 'parent.jpg', text: 'Guidance and resources for parents to support their children’s growth.', bg: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)' },
+        { img: 'community.jpg', text: 'Building strong, resilient communities through collaboration.', bg: 'linear-gradient(135deg, #a21caf 0%, #7c3aed 100%)' },
+        { img: 'strategy.jpg', text: 'Long-term planning for sustainable impact and growth.', bg: 'linear-gradient(135deg, #fde047 0%, #facc15 100%)' },
+        { img: 'implementation.jpg', text: 'Turning ideas into action with clear steps and accountability.', bg: 'linear-gradient(135deg, #f472b6 0%, #ec4899 100%)' },
+        { img: 'issues.jpg', text: 'Major challenges tackled and progress made over three years.', bg: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)' },
+        { img: 'poverty.jpg', text: 'Helping families move out of poverty with sustainable solutions.', bg: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)' },
+        { img: 'transform.jpg', text: 'Stories of youth transformation and empowerment.', bg: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' },
+        { img: 'parents-dev.jpg', text: 'Workshops and activities designed for parents’ development.', bg: 'linear-gradient(135deg, #a3e635 0%, #65a30d 100%)' },
+        { img: 'relationships.jpg', text: 'Fostering positive relationships and building infrastructure.', bg: 'linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%)' },
+        { img: 'jobs.jpg', text: 'Supporting families to create jobs based on identified needs.', bg: 'linear-gradient(135deg, #e879f9 0%, #a21caf 100%)' },
+        { img: 'problems.jpg', text: 'Approaches and solutions to ongoing community problems.', bg: 'linear-gradient(135deg, #374151 0%, #1f2937 100%)' },
+        { img: 'groups.jpg', text: 'How groups are formed and their impact on the community.', bg: 'linear-gradient(135deg, #fb7185 0%, #be185d 100%)' },
+        { img: 'status.jpg', text: 'Current status and achievements of groups as of 2025.', bg: 'linear-gradient(135deg, #fbbf24 0%, #f59e42 100%)' },
+        { img: 'benefits.jpg', text: 'The many benefits of working together in groups.', bg: 'linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%)' },
+        { img: 'hvc.jpg', text: 'HVC program details and its impact on families.', bg: 'linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%)' },
+        { img: 'ikirezi.jpg', text: 'Ikirezi project and its role in community development.', bg: 'linear-gradient(135deg, #34d399 0%, #059669 100%)' },
+        { img: 'fic.jpg', text: 'The Free Indeed Campaign and its outcomes.', bg: 'linear-gradient(135deg, #f87171 0%, #dc2626 100%)' },
+        { img: 'antidrug.jpg', text: 'Youth involvement in anti-drug campaigns and their results.', bg: 'linear-gradient(135deg, #84cc16 0%, #365314 100%)' },
+        { img: 'challenges.jpg', text: 'Difficulties encountered and how they were overcome.', bg: 'linear-gradient(135deg, #6b7280 0%, #374151 100%)' },
+        { img: 'achievements.jpg', text: 'Celebrating the milestones and successes of the project.', bg: 'linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)' },
+        { img: 'strategies.jpg', text: 'Key strategies that guide our work and mission. <img src="fic.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #166534 0%, #22c55e 100%)' },
+        { img: 'activities.jpg', text: ' <img src="some.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #6d28d9 0%, #a21caf 100%)' },
+        { img: 'opportunities.jpg', text: ' <img src="zimwe.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #b91c1c 0%, #f59e42 100%)' },
+        { img: 'together.jpg', text: ' <img src="gukorera hamwe.npj.jpgg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #be185d 0%, #f472b6 100%)' },
+        { img: 'youth-activities.jpg', text: ' <img src="good.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #ff512f 0%, #dd2476 100%)' },
+        { img: 'small-industry.jpg', text: ' <img src="inganga.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #1d4350 0%, #a43931 100%)' },
+        { img: 'talents.jpg', text: ' <img src="imiryango.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #f953c6 0%, #b91d73 100%)' },
+        { img: 'fast-change.jpg', text: ' <img src="gukorera hamwe.npj.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)' },
+        { img: 'handicraft.jpg', text: ' <img src="imwe.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #614385 0%, #516395 100%)' },
+        { img: 'family-develop.jpg', text: '<img src="uyu.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #eecda3 0%, #ef629f 100%)' },
+        { img: 'shelter.jpg', text: ' <img src="ibikorwa.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #e96443 0%, #904e95 100%)' },
+        { img: 'sewing.jpg', text: ' <img src="urubyiruko.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #ffb347 0%, #ffcc33 100%)' },
+        { img: 'community-work.jpg', text: ' <img src="urubyiruko.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #43cea2 0%, #185a9d 100%)' },
+        { img: 'harvest.jpg', text: ' <img src="umusaruro.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #ff9966 0%, #ff5e62 100%)' },
+        { img: 'dev-activities.jpg', text: '<img src="kwiteza.npg.jpg" alt="kwiteza.npg.jpg"class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #00c3ff 0%, #ffff1c 100%)' },
+        { img: 'church.jpg', text: '<img src="good.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(135deg, #c33764 0%, #1d2671 100%)' },
+        { img: 'fic-campaign.jpg', text: ' <img src="fic.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', bg: 'linear-gradient(13deg, #fdc830 29%, #f37335 10%)' },
+        { img: 'fic-campaign.jpg', text: ` <img src="th.npj.jpg" alt="" class="rounded-lg shadow-md w-full h-full object-cover ">
+             <table class="table-auto w-full border border-gray-300 mb-6 padding-top: 1rem padding-bottom: 32xl">
+                <caption class="font-bold text-lg mb-2">GUSHIMIRA - URUTONDE RW'IBYO TWAGEZEHO</caption> 
+                <thead class="bg-blue-100"
+                <tr>
+                    <th class="border px-2 py-1">ICYO TWAGEZEHO</th>
+                    <th class="border px-2 py-1">URUHARE RWAGIZWE</th>
+                    <th class="border px-2 py-1">IBISOBANURO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="category">Ubufatanye</td>
+                    <td>Twagezeho ubufatanye</td>
+                    <td>Ni byinshi imbaraga zagiye zikurikirana</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Urukundo n'umurava</td>
+                    <td>Tubikesha Urukundo n'umurava</td>
+                    <td>Byagizwemo mu byose twakoranye</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Ubuyobozi</td>
+                    <td>Uruhare bwiza rwa buri rwego</td>
+                    <td>Bw'Igihugu cyacu</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Compassion International</td>
+                    <td>Ubufatanye bwimbitse</td>
+                    <td>Mu iterambere ry'abana n'imiryango</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Sponsors</td>
+                    <td>Gufasha mu iterambere</td>
+                    <td>Kubufatanye bwanyu</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Itorero</td>
+                    <td>Ubufatanye mu guteza imbere</td>
+                    <td>Ubuzima bwiza iwacu</td>
+                </tr>
+                
+                <tr>
+                    <td class="category">Abafatanyabikorwa</td>
+                    <td>Ubufatanye mu bikorwa byose</td>
+                    <td>Mu iterambere ry'imiryango</td>
+                </tr>
+                <thead class="bg--100">
+                <tr class="category-header">
+                
+                    <td colspan="5">MWARAKOZE IMANA IBAHE UMUGISHA</td>
+                </tr>
+            </tbody>
+        </table>  <div class="bg-blue-100">
+            <p><strong>Turabashimira cyane kubufatanye bwanyu bwimbitse, ubufatanye bwagiye bikomeye, imbaraga nyinshi zagiye zikurikirana, kandi tubikesha urukundo n'umurava byagizwemo mu byose.</strong></p>
+        </div>   <img src="giv.npj.jpg" alt="" class="rounded-lg shadow-md w-full h-full object-cover "> `,  bg: 'linear-gradient(135deg, #fdc830 0%, #f37335 10%)' },
+    ];
+
+    // Show the button grid on load
+    buttonGrid.classList.remove('hidden');
+    detailViews.classList.add('hidden');
+
+    function showDetail(index) {
+        // Set content
+        detailImg.src = details[index].img;
+        detailText.innerHTML = details[index].text.replace(/\n/g, '<br>');
+        detailViewTemplate.style.background = details[index].bg;
+        // Show detail view, hide grid
+        buttonGrid.classList.add('hidden');
+        detailViews.classList.remove('hidden');
+        detailViewTemplate.style.display = 'flex';
+    }
+
+    function showGrid() {
+        // Hide detail view and reset its content
+        detailViews.classList.add('hidden');
+        detailViewTemplate.style.display = 'none';
+        buttonGrid.classList.remove('hidden');
+        // Reset background and content for next time
+        detailViewTemplate.style.background = '';
+        detailImg.src = '';
+        detailText.innerHTML = '';
+    }
+
+    // Attach event listeners to all grid buttons
+    function attachButtonListeners() {
+        const buttons = buttonGrid.querySelectorAll('.detail-btn');
+        buttons.forEach(function (btn) {
+            btn.onclick = function () {
+                const idx = parseInt(btn.getAttribute('data-detail'), 10);
+                showDetail(idx);
+            };
+        });
+    }
+
+    // Attach listeners on load
+    attachButtonListeners();
+
+    // Back button event
+    if (backToGridBtn) {
+        backToGridBtn.onclick = showGrid;
+    }
+});
+</script>
+    <style>
+        /* Hover effect for cop.png.png image */
+        .cop-hover-effect {
+            transition: transform 0.3s ease;
+        }
+        .cop-hover-effect:hover {
+            transform: scale(1.15);
+        }
+        /* Hover effect for logo image (lon.npj.jpg) */
+        .logo-hover-effect {
+            transition: transform 0.3s ease;
+        }
+        .logo-hover-effect:hover {
+            transform: scale(1.15);
+        }
+        /* Hover effect for hero image (li.npj.jpg) */
+        .hover-scale-effect {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale-effect:hover {
+            transform: scale(1.15);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-8{bottom:2rem}.right-8{right:2rem}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mx-2{margin-left:0.5rem;margin-right:0.5rem}.mb-1{margin-bottom:0.25rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mt-4{margin-top:1rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.ml-3{margin-left:0.75rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-16{margin-top:4rem}.mt-3{margin-top:0.75rem}.mt-8{margin-top:2rem}.mr-2{margin-right:0.5rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-16{height:4rem}.h-20{height:5rem}.h-32{height:8rem}.h-6{height:1.5rem}.h-full{height:100%}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-4{height:1rem}.h-40{height:10rem}.h-8{height:2rem}.w-16{width:4rem}.w-20{width:5rem}.w-32{width:8rem}.w-6{width:1.5rem}.w-full{width:100%}.w-10{width:2.5rem}.w-5{width:1.25rem}.w-4{width:1rem}.w-40{width:10rem}.w-8{width:2rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}.max-w-full{max-width:100%}.flex-shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-3{gap:0.75rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-4{gap:1rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-amber-500{--tw-border-opacity:1;border-color:rgb(245 158 11 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-blue-900{--tw-border-opacity:1;border-color:rgb(30 58 138 / var(--tw-border-opacity, 1))}.border-cyan-500{--tw-border-opacity:1;border-color:rgb(6 182 212 / var(--tw-border-opacity, 1))}.border-emerald-500{--tw-border-opacity:1;border-color:rgb(16 185 129 / var(--tw-border-opacity, 1))}.border-fuchsia-500{--tw-border-opacity:1;border-color:rgb(217 70 239 / var(--tw-border-opacity, 1))}.border-gray-500{--tw-border-opacity:1;border-color:rgb(107 114 128 / var(--tw-border-opacity, 1))}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.border-green-500{--tw-border-opacity:1;border-color:rgb(34 197 94 / var(--tw-border-opacity, 1))}.border-green-900{--tw-border-opacity:1;border-color:rgb(20 83 45 / var(--tw-border-opacity, 1))}.border-indigo-500{--tw-border-opacity:1;border-color:rgb(99 102 241 / var(--tw-border-opacity, 1))}.border-lime-500{--tw-border-opacity:1;border-color:rgb(132 204 22 / var(--tw-border-opacity, 1))}.border-lime-700{--tw-border-opacity:1;border-color:rgb(77 124 15 / var(--tw-border-opacity, 1))}.border-orange-500{--tw-border-opacity:1;border-color:rgb(249 115 22 / var(--tw-border-opacity, 1))}.border-orange-900{--tw-border-opacity:1;border-color:rgb(124 45 18 / var(--tw-border-opacity, 1))}.border-pink-500{--tw-border-opacity:1;border-color:rgb(236 72 153 / var(--tw-border-opacity, 1))}.border-pink-900{--tw-border-opacity:1;border-color:rgb(131 24 67 / var(--tw-border-opacity, 1))}.border-purple-500{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.border-purple-900{--tw-border-opacity:1;border-color:rgb(88 28 135 / var(--tw-border-opacity, 1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.border-rose-500{--tw-border-opacity:1;border-color:rgb(244 63 94 / var(--tw-border-opacity, 1))}.border-sky-500{--tw-border-opacity:1;border-color:rgb(14 165 233 / var(--tw-border-opacity, 1))}.border-teal-500{--tw-border-opacity:1;border-color:rgb(20 184 166 / var(--tw-border-opacity, 1))}.border-violet-500{--tw-border-opacity:1;border-color:rgb(139 92 246 / var(--tw-border-opacity, 1))}.border-yellow-500{--tw-border-opacity:1;border-color:rgb(234 179 8 / var(--tw-border-opacity, 1))}.border-blue-100{--tw-border-opacity:1;border-color:rgb(219 234 254 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-green-400{--tw-border-opacity:1;border-color:rgb(74 222 128 / var(--tw-border-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-blue-500{--tw-bg-opacity:1;background-color:rgb(59 130 246 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-blue-900{--tw-bg-opacity:1;background-color:rgb(30 58 138 / var(--tw-bg-opacity, 1))}.bg-cyan-500{--tw-bg-opacity:1;background-color:rgb(6 182 212 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-fuchsia-500{--tw-bg-opacity:1;background-color:rgb(217 70 239 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-gray-500{--tw-bg-opacity:1;background-color:rgb(107 114 128 / var(--tw-bg-opacity, 1))}.bg-gray-600{--tw-bg-opacity:1;background-color:rgb(75 85 99 / var(--tw-bg-opacity, 1))}.bg-gray-700{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-green-900{--tw-bg-opacity:1;background-color:rgb(20 83 45 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-lime-500{--tw-bg-opacity:1;background-color:rgb(132 204 22 / var(--tw-bg-opacity, 1))}.bg-lime-700{--tw-bg-opacity:1;background-color:rgb(77 124 15 / var(--tw-bg-opacity, 1))}.bg-orange-500{--tw-bg-opacity:1;background-color:rgb(249 115 22 / var(--tw-bg-opacity, 1))}.bg-orange-900{--tw-bg-opacity:1;background-color:rgb(124 45 18 / var(--tw-bg-opacity, 1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.bg-pink-900{--tw-bg-opacity:1;background-color:rgb(131 24 67 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-purple-900{--tw-bg-opacity:1;background-color:rgb(88 28 135 / var(--tw-bg-opacity, 1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.bg-teal-500{--tw-bg-opacity:1;background-color:rgb(20 184 166 / var(--tw-bg-opacity, 1))}.bg-violet-500{--tw-bg-opacity:1;background-color:rgb(139 92 246 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-yellow-500{--tw-bg-opacity:1;background-color:rgb(234 179 8 / var(--tw-bg-opacity, 1))}.bg-blue-200{--tw-bg-opacity:1;background-color:rgb(191 219 254 / var(--tw-bg-opacity, 1))}.bg-blue-400{--tw-bg-opacity:1;background-color:rgb(96 165 250 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-blue-800{--tw-bg-opacity:1;background-color:rgb(30 64 175 / var(--tw-bg-opacity, 1))}.bg-green-700{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.bg-purple-700{--tw-bg-opacity:1;background-color:rgb(126 34 206 / var(--tw-bg-opacity, 1))}.bg-red-600{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-opacity-40{--tw-bg-opacity:0.4}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-blue-50{--tw-gradient-from:#eff6ff var(--tw-gradient-from-position);--tw-gradient-to:rgb(239 246 255 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-100{--tw-gradient-to:#e0e7ff var(--tw-gradient-to-position)}.object-cover{object-fit:cover}.p-6{padding:1.5rem}.p-4{padding:1rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-8{padding-top:2rem;padding-bottom:2rem}.pb-6{padding-bottom:1.5rem}.pl-16{padding-left:4rem}.pl-5{padding-left:1.25rem}.text-left{text-align:left}.text-center{text-align:center}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-blue-700{--tw-text-opacity:1;color:rgb(29 78 216 / var(--tw-text-opacity, 1))}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-blue-300{--tw-text-opacity:1;color:rgb(147 197 253 / var(--tw-text-opacity, 1))}.text-green-700{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-amber-700:hover{--tw-bg-opacity:1;background-color:rgb(180 83 9 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-700:hover{--tw-bg-opacity:1;background-color:rgb(29 78 216 / var(--tw-bg-opacity, 1))}.hover\:bg-cyan-700:hover{--tw-bg-opacity:1;background-color:rgb(14 116 144 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-fuchsia-700:hover{--tw-bg-opacity:1;background-color:rgb(162 28 175 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-700:hover{--tw-bg-opacity:1;background-color:rgb(55 65 81 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-900:hover{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.hover\:bg-green-700:hover{--tw-bg-opacity:1;background-color:rgb(21 128 61 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-700:hover{--tw-bg-opacity:1;background-color:rgb(67 56 202 / var(--tw-bg-opacity, 1))}.hover\:bg-lime-700:hover{--tw-bg-opacity:1;background-color:rgb(77 124 15 / var(--tw-bg-opacity, 1))}.hover\:bg-lime-900:hover{--tw-bg-opacity:1;background-color:rgb(54 83 20 / var(--tw-bg-opacity, 1))}.hover\:bg-orange-700:hover{--tw-bg-opacity:1;background-color:rgb(194 65 12 / var(--tw-bg-opacity, 1))}.hover\:bg-pink-700:hover{--tw-bg-opacity:1;background-color:rgb(190 24 93 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-700:hover{--tw-bg-opacity:1;background-color:rgb(126 34 206 / var(--tw-bg-opacity, 1))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))}.hover\:bg-rose-700:hover{--tw-bg-opacity:1;background-color:rgb(190 18 60 / var(--tw-bg-opacity, 1))}.hover\:bg-sky-700:hover{--tw-bg-opacity:1;background-color:rgb(3 105 161 / var(--tw-bg-opacity, 1))}.hover\:bg-teal-700:hover{--tw-bg-opacity:1;background-color:rgb(15 118 110 / var(--tw-bg-opacity, 1))}.hover\:bg-transparent:hover{background-color:transparent}.hover\:bg-violet-700:hover{--tw-bg-opacity:1;background-color:rgb(109 40 217 / var(--tw-bg-opacity, 1))}.hover\:bg-yellow-700:hover{--tw-bg-opacity:1;background-color:rgb(161 98 7 / var(--tw-bg-opacity, 1))}.hover\:bg-blue-50:hover{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:bg-opacity-10:hover{--tw-bg-opacity:0.1}.hover\:text-blue-600:hover{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.hover\:text-gray-800:hover{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-blue-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(59 130 246 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}}@media (min-width: 768px){.md\:mb-0{margin-bottom:0px}.md\:mt-0{margin-top:0px}.md\:flex{display:flex}.md\:hidden{display:none}.md\:w-1\/2{width:50%}.md\:w-1\/3{width:33.333333%}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:items-center{align-items:center}.md\:justify-between{justify-content:space-between}.md\:space-x-12 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(3rem * var(--tw-space-x-reverse));margin-left:calc(3rem * calc(1 - var(--tw-space-x-reverse)))}.md\:space-y-0 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px * var(--tw-space-y-reverse))}.md\:py-32{padding-top:8rem;padding-bottom:8rem}.md\:text-6xl{font-size:3.75rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}@media (min-width: 1280px){.xl\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}}@media (min-width: 1536px){.\32xl\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}}</style></head>
+<body class="bg-gray-50">
+    <!-- Top Center Contact Button -->
+    <div class="w-full flex flex-col items-center mt-4">
+        <a id="contactBtn" href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#contact" class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition mb-4">in deep</a>
+        <div id="buttonGrid" class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 hidden">
+            <!-- Button grid: all buttons, each with detail-btn and data-detail index -->
+            <!-- Button grid: all buttons, each with detail-btn and data-detail index, now with image and paragraph -->
+            <div class="flex flex-col items-center space-y-2 btn-detail-0"><img src="./code kwi ca.html_files/youth.npj.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-500 hover:bg-blue-700 border border-blue-500 transition detail-btn" data-detail="0">Youth Support</button><p class="text-xs text-center">Empowering youth with skills and mentorship for a brighter future and cool for them.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-1"><img src="" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-green-500 hover:bg-green-700 border border-green-500 transition detail-btn" data-detail="1">Parent Support</button><p class="text-xs text-center">Guidance and resources for parents to support their children’s growth.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-2"><img src="" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-purple-500 hover:bg-purple-700 border border-purple-500 transition detail-btn" data-detail="2">Community Development</button><p class="text-xs text-center">Building strong, resilient communities through collaboration.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-3"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/strategy.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-yellow-500 hover:bg-yellow-700 border border-yellow-500 transition detail-btn" data-detail="3">Strategic Planning</button><p class="text-xs text-center">Long-term planning for sustainable impact and growth.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-4"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/implementation.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-pink-500 hover:bg-pink-700 border border-pink-500 transition detail-btn" data-detail="4">Implementation Plan</button><p class="text-xs text-center">Turning ideas into action with clear steps and accountability.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-5"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/issues.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-indigo-500 hover:bg-indigo-700 border border-indigo-500 transition detail-btn" data-detail="5">Key Issues Addressed in 3 Years</button><p class="text-xs text-center">Major challenges tackled and progress made over three years.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-6"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/poverty.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-teal-500 hover:bg-teal-700 border border-teal-500 transition detail-btn" data-detail="6">Poverty Graduation</button><p class="text-xs text-center">Helping families move out of poverty with sustainable solutions.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-7"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/transform.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-orange-500 hover:bg-orange-700 border border-orange-500 transition detail-btn" data-detail="7">How Youth Are Helped to Transform Their Lives</button><p class="text-xs text-center">Stories of youth transformation and empowerment.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-8"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/parents-dev.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-lime-500 hover:bg-lime-700 border border-lime-500 transition detail-btn" data-detail="8">Development Activities for Parents</button><p class="text-xs text-center">Workshops and activities designed for parents’ development.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-9"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/relationships.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-cyan-500 hover:bg-cyan-700 border border-cyan-500 transition detail-btn" data-detail="9">Good Relationships &amp; Infrastructure</button><p class="text-xs text-center">Fostering positive relationships and building infrastructure.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-10"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/jobs.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-fuchsia-500 hover:bg-fuchsia-700 border border-fuchsia-500 transition detail-btn" data-detail="10">How We Help Families Create Development Jobs Based on Issues Found in Strategic Plan</button><p class="text-xs text-center">Supporting families to create jobs based on identified needs.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-11"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/problems.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-700 hover:bg-gray-900 border border-gray-700 transition detail-btn" data-detail="11">How We Solve Existing Problems</button><p class="text-xs text-center">Approaches and solutions to ongoing community problems.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-12"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/groups.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-rose-500 hover:bg-rose-700 border border-rose-500 transition detail-btn" data-detail="12">Forming Groups</button><p class="text-xs text-center">How groups are formed and their impact on the community.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-13"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/status.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-amber-500 hover:bg-amber-700 border border-amber-500 transition detail-btn" data-detail="13">Status of Groups as of 1/2025</button><p class="text-xs text-center">Current status and achievements of groups as of 2025.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-14"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/benefits.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-violet-500 hover:bg-violet-700 border border-violet-500 transition detail-btn" data-detail="14">Benefits of Groups</button><p class="text-xs text-center">The many benefits of working together in groups.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-15"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/hvc.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-sky-500 hover:bg-sky-700 border border-sky-500 transition detail-btn" data-detail="15">HVC</button><p class="text-xs text-center">HVC program details and its impact on families.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-16"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/ikirezi.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-emerald-500 hover:bg-emerald-700 border border-emerald-500 transition detail-btn" data-detail="16">Ikirezi</button><p class="text-xs text-center">Ikirezi project and its role in community development.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-17"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/fic.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-red-500 hover:bg-red-700 border border-red-500 transition detail-btn" data-detail="17">Free Indeed Campaign (FIC)</button><p class="text-xs text-center">The Free Indeed Campaign and its outcomes.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-18"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/antidrug.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-lime-700 hover:bg-lime-900 border border-lime-700 transition detail-btn" data-detail="18">Youth Participation in Anti-Drug Campaigns (2022-2024)</button><p class="text-xs text-center">Youth involvement in anti-drug campaigns and their results.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-19"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/challenges.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-500 hover:bg-gray-700 border border-gray-500 transition detail-btn" data-detail="19">Challenges Faced in Solving Problems</button><p class="text-xs text-center">Difficulties encountered and how they were overcome.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-20"><img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/achievements.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-blue-900 hover:bg-blue-700 border border-blue-900 transition detail-btn" data-detail="20">Achievements We Celebrate</button><p class="text-xs text-center">Celebrating the milestones and successes of the project.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-21"><img src="" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-green-900 hover:bg-green-700 border border-green-900 transition detail-btn" data-detail="21">General Strategies</button><p class="text-xs text-center">Key strategies that guide our work and mission.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-22"><img src="some.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-purple-900 hover:bg-purple-700 border border-purple-900 transition detail-btn" data-detail="22">Some Images of Activities Done</button><p class="text-xs text-center">A gallery of activities and events held by the project.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-23"><img src="zimwe.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-orange-900 hover:bg-orange-700 border border-orange-900 transition detail-btn" data-detail="23">Some Opportunities to Escape Poverty Quickly (Group Activities)</button><p class="text-xs text-center">Group activities that provide quick opportunities for change.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-24"><img src="gukorera hamwe.npj.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-pink-900 hover:bg-pink-700 border border-pink-900 transition detail-btn" data-detail="24">Working Together Helps Families Develop</button><p class="text-xs text-center">The power of collaboration in family and community development.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-25"><img src="good.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="25">Youth Activities Supported by the Project</button><p class="text-xs text-center">Youth activities supported by the project, including sports, arts, and leadership training.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-26"><img src="inganga.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="26">Small Industries in Rural Families</button><p class="text-xs text-center">Small industries in rural families help boost local economies and provide jobs.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-27"><img src="imiryango.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="27">Families Discovering and Developing Talents for Income</button><p class="text-xs text-center">Families discovering and developing talents for income generation and self-reliance.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-28"><img src="gukorera hamwe.npj.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="28">Some Benefits of Working Together for Fast Change</button><p class="text-xs text-center">Some benefits of working together for fast change include shared resources and support.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-29"><img src="imwe.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="29">Some Handicraft Activities Youth Do for the Project</button><p class="text-xs text-center">Some handicraft activities youth do for the project, such as basket weaving and tailoring.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-30"><img src="uyu.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="30">This Family Managed to Develop</button><p class="text-xs text-center">This family managed to develop through project support and community engagement.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-31"><img src="ibikorwa.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="31">Activities Helping Families Get Shelter</button><p class="text-xs text-center">Activities helping families get shelter, including building and renovation projects.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-32"><img src="urubyiruko.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="32">Youth Can Sew Clean Clothes for Back Support</button><p class="text-xs text-center">Youth can sew clean clothes for back support and to learn valuable skills.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-33"><img src="urubyiruko.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="33">Youth Participate in Community Work</button><p class="text-xs text-center">Youth participate in community work, volunteering and helping others.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-34"><img src="umusaruro.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="34">Harvests We Celebrate and Thank God For</button><p class="text-xs text-center">Harvests we celebrate and thank God for, showing the fruits of our labor.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-35"><img src="kwiteza.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="35">Development Activities</button><p class="text-xs text-center">Development activities include training, workshops, and infrastructure projects.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-36"><img src="good.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="36">We Have Good Times to Thank God in Church</button><p class="text-xs text-center">We have good times to thank God in church, building faith and unity.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-37"><img src="fic.npg.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="37">FIC (Free Indeed Campaign)</button><p class="text-xs text-center">FIC (Free Indeed Campaign) empowers youth and families to live free and fulfilled lives.</p></div>
+            <div class="flex flex-col items-center space-y-2 btn-detail-38"><img src="thank.npj.jpg" alt="" class="w-16 h-16 rounded-full object-cover mb-1"><button class="px-4 py-2 rounded-lg font-semibold text-white bg-gray-600 hover:bg-transparent hover:text-gray-800 border border-gray-600 transition detail-btn" data-detail="38">Thanksgiving</button><p class="text-xs text-center">Thanksgiving events bring the community together to celebrate achievements.</p></div>
+        </div>
+        <!-- Detail Views for Each Button -->
+        <div id="detailViews" class="w-full max-w-5xl mx-auto hidden">
+            <div class="relative bg-red rounded-lg shadow-lg p-6 flex flex-col items-center space-y-4" id="detailViewTemplate" style="display:none;">
+                <img id="detailImg" src="" alt="" class="w-32 h-32 object-cover rounded-lg">
+                <div id="detailText" class="w-full"></div>
+                <button id="backToGrid" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Back</button>
+            </div>
+        </div>
+    <!-- Header -->
+    <header class="sticky-header bg-white shadow-md shadow-lg py-2">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="logo-container w-20 h-20 rounded-full" style="position:relative;">
+                    <img src="umushonga.npj.jpg" alt="" class="w-full h-full object-cover logo-hover-effect" style="background: none; box-shadow: none;">
+                
+        
+                </div>
+                <h1 class="text-xl font-bold text-blue-600">RW 0374</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#overview" class="text-gray-600 hover:text-blue-600 transition">Overview</a>
+                <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#eligibility" class="text-gray-600 hover:text-blue-600 transition">Eligibility</a>
+                <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#process" class="text-gray-600 hover:text-blue-600 transition">Process</a>
+                <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#benefits" class="text-gray-600 hover:text-blue-600 transition">Benefits</a>
+                <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#faqs" class="text-gray-600 hover:text-blue-600 transition">FAQs</a>
+            </nav>
+            <button class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white">
+        <div class="px-4 py-20 md:py-32">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mx-auto mb-6 flex items-center justify-center">
+                    <img src="logo.npj.jpg" alt="Icon representing justice scale hovering above Rwanda&#39;s mountainous landscape with sunrise colors" class="w-32 h-32 hover-scale-effect rounded-full" style="box-shadow:none; background:none;">
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-pulse-slow">Rwanda project Act RW 0374</h1>
+                <p class="text-xl mb-8"> A complete vision to help you in life, moving from a bad life to a good one through the teachings of positive values, self-reliance, embracing their gifts, and helping everything to work for underprivileged children and their families in a transparent manner in Rwanda</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#process" class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition">Learn More</a>
+                    <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#eligibility" class="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:bg-opacity-10 transition">Check Eligibility</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-16 bg-white full-width-section">
+        <div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-blue-600">About RW 0374</h2>
+                <div class="w-20 h-1 bg-blue-400 mx-auto mb-6"></div>
+                <p class="text-gray-600 leading-relaxed w-full max-w-full mx-auto px-4">they are given compassion everywhere they deserve it, so that they can be assisted in their daily lives and be taught skills that will help them succeed in the future.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-gradient rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="w-32 h-32 mb-8 rounded-full bg-blue-200 flex items-center justify-center">
+                        <img src="logos.npj.jpg" alt="" class="w-32 h-32 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Teaching the word of God</h3>
+                    <p class="text-gray-600">RW 374 Every child is taught the word of God and is also instructed that good behavior is based on God, so that they may be able to lead a life that endures.</p>
+                </div>
+                
+                <div class="card-gradient rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="w-32 h-32 mb-8 rounded-full bg-blue-200 flex items-center justify-center">
+                        <img src="emporoye.npg.jpg" alt="" class="w-32 h-32 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Self-employment</h3>
+                    <p class="text-gray-600">They are taught to start their own businesses so that in their everyday life they have the resources that will sustain them even when they grow older and retire.</p>
+                </div>
+                
+                <div class="card-gradient rounded-lg shadow-lg p-6 hover:shadow-xl transition">
+                    <div class="w-32 h-32 mb-8 rounded-full bg-blue-200 flex items-center justify-center">
+                        <img src="payi.npj.jpg" alt="" class="w-32 h-32 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">paying school fees</h3>
+                    <p class="text-gray-600">In everyday life, children and a few adults receive support from RW 374 to help pay school fees and other necessary items for school so that the child can learn.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section id="eligibility" class="py-16 bg-white full-width-section">
+        <div class="px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-600">Who is Eligible?</h2>
+            
+            <div class="max-w-8xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 flex items-center">
+                        <img src="./code kwi ca.html_files/cop.npg.jpg" alt="" class="rounded-lg shadow-md w-full h-full object-cover cop-hover-effect">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-semibold mb-4">The basis of those  should be assisted </h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-green-500 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-2 text-gray-600">Following the list provided by the government has helped them themselves.</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-green-500 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-2 text-gray-600">To check if he does not live far from the project by kilometers</p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-green-500 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-2 text-gray-600">To check if he/she is Rwandan </p>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="flex-shrink-0 text-green-500 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <p class="ml-2 text-gray-600">To see if he/she does not exceed the age of assistance</p>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-8 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-semibold text-blue-700 mb-2">Note:</h4>
+                            <p class="text-sm text-gray-600">Note: There are extraordinary measures for those  attempt to deceive in order to obtain assistance they do not deserve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-32 bg-white full-width-section">
+        <div class="px-17">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-600">Project Process</h2>
+            
+            <div class="timeline-container max-w-8xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item relative pl-16 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">1</div>
+                            <h3 class="ml-3 text-xl font-semibold">In Taking Care of Health</h3>
+                        </div>
+                        <p class="text-gray-600">They ensure the health of every child by providing them with health insurance, allowing for regular medical check-ups at least twice a year for children under five years old, while those older than that are checked once a year.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item relative pl-16 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">2</div>
+                            <h3 class="ml-3 text-xl font-semibold">To pay For School Fees</h3>
+                        </div>
+                        <p class="text-gray-600">Paying school fees for children and providing them with necessary materials is essential for their education.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item relative pl-16 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">3</div>
+                            <h3 class="ml-3 text-xl font-semibold">Teaching is the key, God is the source of understanding.</h3>
+                        </div>
+                        <p class="text-gray-600">To Teach children to trust God and also be given religious books like the Bible.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item relative pl-16 mb-12">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-2">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">4</div>
+                            <h3 class="ml-3 text-xl font-semibold">Relationship with others</h3>
+                        </div>
+                        <p class="text-gray-600">There is a need to teach children to live peacefully with others through fellowship and to work peacefully with everyone, respecting one another..</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item relative pl-16">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+                        <div class="flex items-center mb-2">
+                         <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">5</div> 
+                         <h3 class="ml-3 text-xl font-semibold">Some Opportunities to Escape Poverty Quickly</h3> 
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-8xl mx-auto">
+                <div class="bg-blue-50 rounded-lg p-8">
+                     <h3 class="text-3xl font-bold mb-12 text-center text-blue-600">Processing Time</h3>
+                     <table class="table-auto w-full border border-gray-300 mb-6">
+                         <caption class="font-bold text-lg mb-2">SCHOOL BUDGET AND EXPENSES</caption>
+           <thead class="bg-blue-100">
+                    <tr class="header-row">
+                    <th class="border px-2 py-1">Items</th>
+                    <th class="border px-2 py-1">Quantity</th>
+                    <th class="border px-2 py-1">1 Item Price</th>
+                    <th class="border px-2 py-1">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+             <!-- SCHOOL FEES -->
+             <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="5">SCHOOL FEES</td>
+                </tr>
+             </thead>
+                <tr>
+                    <td class="border px-2 py-1">Nursery school fees</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Primary school fees</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Secondary 9YBE &amp; 12YBE (non-boarding)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Secondary REB</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Secondary TVET (boarding schools)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">TVET (Short course)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">University school fees</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">School fees (abana bihariye)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Audio Drama IKIREZI</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td  class="border px-2 py-1">Small Total</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- SCHOOL SUPPLIES -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">SCHOOL SUPPLIES</td>
+                </tr>
+                </thead>
+                <tr class="subcategory-row">
+                    <td  class="border px-2 py-1">NOTE BOOKS FOR NURSERY (14 PERSONS From N1 - N3)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Couleur Penciel</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Papier glass</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Croyons Dolphine (boite)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Taille crayon</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Gamme Dolphine</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Plastiscines</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Penture à eau</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Farde a Triangle</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Colle</td>
+                    <td class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Lame de papier Nkundamahoro</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Drawing books Nkunda Amahoro (48 pages)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Notebooks Nkunda Amahoro (48 pages - Cadrier)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Notebooks Nkunda Amahoro (48 pages - lignes)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Uniforme</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Imyenda ya Sport</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Umupira w'imbeho (ubudodo)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td  class="border px-2 py-1">Small Total</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- NOTE BOOKS FOR PRIMARY 17 PERSONS From P1-P3 -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">NOTE BOOKS FOR PRIMARY (17 PERSONS From P1-P3)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td  class="border px-2 py-1">Notebooks Nkunda Amahoro (96 pages)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Notebooks Nkunda Amahoro (200 pages)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Caligraphie Nkunda Amahoro (96 pages)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Drawing books Nkunda Amahoro</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Pencil Deli U200.MATE</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Chaper Simba</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Rasser Simba</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td  class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td  class="border px-2 py-1">Small Total</td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1"></td>
+                    <td  class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- NOTE BOOKS FOR PRIMARY 66 PERSONS From P4-P6 -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">NOTE BOOKS FOR PRIMARY (66 PERSONS From P4-P6)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (96 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (200 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Mathematical sets Convention</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Registre Fils No 2 (P6)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td class="border px-2 py-1">Small Total</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- NOTE BOOKS FOR SECONDARY 75 PERSONS FROM (S1-S3) -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">NOTE BOOKS FOR SECONDARY (75 PERSONS FROM S1-S3)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (96 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (200 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Papers Nkunda Amahoro (S1 and S3)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Registre Fils No 2</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Calculator Scientific KENKO 30 (S3)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Periodic tables Colored</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Mathematical sets Convention</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td class="border px-2 py-1">Small Total</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- NOTE BOOKS FOR SECONDARY 78 PERSONS FROM (S4-S6) -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">NOTE BOOKS FOR SECONDARY (78 PERSONS FROM S4-S6)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (96 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (200 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Registre Fils No 2</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Papers Nkunda Amahoro (S4 and S6)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Calculator Scientific KENKO 62 (S4 and S6)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr class="total-row">
+                    <td class="border px-2 py-1">Small Total</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- NOTE BOOKS FOR TVET 39 -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">NOTE BOOKS FOR TVET (39)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="border px-2 py-1">Registre Fils No 2</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Notebooks Nkunda Amahoro (200 pages)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Mathematical sets Convention</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    
+                </tr>
+                <tr class="total-row">
+                    <td class="border px-2 py-1">Small Total</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1">0</td>
+                </tr>
+
+                <!-- UNIVESTER 24 -->
+                 <thead class="bg-red-100">
+                <tr class="category-row">
+                    <td colspan="4">UNIVESTER (24)</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td class="border px-2 py-1">Papers Nkunda Amahoro</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Rulers Crown (30 Cm)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                <tr>
+                    <td class="border px-2 py-1">Pens (Bic Orginal)</td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                    <td class="border px-2 py-1"></td>
+                </tr>
+                
+                                
+
+                     </tbody></table>
+                
+                     <div>
+                        <button class="px-6 py-2 bg-blue-600 text-white text-center rounded-lg hover:bg-blue-700 transition">Check Claim Status</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 bg-gray-50">
+        <div class="container mx-w-8xl mx-auto">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-600">project RW374 benefit in rwanda
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="file:///C:/Users/umuku/Desktop/New%20folder/Capture001.png" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-blue-800 bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-white text-2xl font-bold">
+                                To pay For School Fees</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4"> </p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 font-semibold">
+                            <li>pay school fees fol student</li>
+                            <li>buying school supplies</li>
+                            <li>teaching social skills</li>
+                            <li>vocational tion</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="file:///C:/Users/umuku/Desktop/New%20folder/FB_IMG_17456712895538916.jpg" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-green-700 bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-white text-2xl font-bold">Teaching is the key, God is the source of understanding</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4"> </p>
+                        <ul class="list-disc pl-1 text-gray-600 space-y-2 font-semibold">
+                            <li>made super understanding</li>
+                            <li>made them Closed to God</li>
+                            <li>made them to be partnerships</li>
+                            <li>teach greatness of GOD</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-purple-700 bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-white text-2xl font-bold">Education &amp; Training</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="">Educational benefits under RW 373:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 font-semibold">
+                            <li>University scholarships for those  have won</li>
+                            <li>Vocational training programs</li>
+                            <li>Entrepreneurship development</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="file:///C:/Users/umuku/Desktop/New%20folder/FB_IMG_17456010935471990.jpg" alt="" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-red-600 bg-opacity-40 flex items-center justify-center">
+                            <h3 class="text-white text-2xl font-bold">Healthcare Support</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="">Medical compensation provisions:</p>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2 font-semibold">
+                            <li>Specialized counseling on life</li>
+                            <li>Comprehensive health insurance</li>
+                            <li>making a health assessment</li>
+                            <li>Priority access to certain treatments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class=" text-center font-semibold">
+                <p class="">RW374 is a project that takes the responsibility of helping everyone  needs help and helps them to help themselves with everything that is needed in their lives to have a better future.
+</p>
+            </div>
+        </h2></div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faqs" class="py-32 bg-white full-width-section">
+        <div class="container mx-auto px-32">
+            <h2 class="text-3xl font-bold mb-12 text-center text-blue-600">Frequently Asked Questions</h2>
+            
+            <div class="max-w-20xl mx-auto">
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg text-blue-800 focus:outline-none">
+                        <span>what happens when person live in it dies</span>
+                        <svg class="w-5 h-5 text-blue-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-3 text-gray-600 hidden">Non-Rwandans can receive assistance from projects in Rwanda depending on the program’s focus and partnerships. Key ways they may be helped include:
+
+Humanitarian &amp; Refugee Support – Rwanda hosts refugees (e.g., from DRC, Burundi) through UNHCR and NGOs, providing healthcare, education, and livelihoods.
+
+Regional &amp; Cross-Border Programs – Some initiatives (e.g., East African Community projects) extend support to non-Rwandans in trade, health, or security.
+
+International Collaborations – Research, tech hubs, and exchange programs may accept foreign participants.
+
+Diplomatic/NGO Channels – Embassies and global NGOs can link non-Rwandans to local aid.
+
+Special Cases – Private charities may assist vulnerable foreigners (e.g., trafficking survivors).
+
+How to Seek Help?
+
+Contact the project directly.
+
+Reach out to international organizations (UN, Red Cross).
+
+Consult the person’s home embassy in Rwanda.
+
+Limitation: Most Rwandan projects prioritize citizens, but exceptions exist for refugees, regional beneficiaries, or international partners.
+
+
+                 .
+                    </div>
+                </div>
+                
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg text-blue-800 focus:outline-none">
+                        <span>how can someone be helped if they are not a Rwandan </span>
+                        <svg class="w-5 h-5 text-blue-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-3 text-gray-600 hidden">: 1. Social Protection &amp; Welfare Programs (e.g., VUP, Girinka, Ubudehe)
+Non-Transferable Benefits: Most government assistance (e.g., cash transfers, livestock) is tied to the individual and does not automatically pass to heirs.
+
+Reassessment: The household may need to reapply if other members qualify.
+
+Girinka (Cow) Program: If a beneficiary dies, the cow may remain with the family if properly cared for; otherwise, it may be reallocated.
+
+2. Housing &amp; Land Rights Projects
+Inheritance Laws Apply: Property rights follow Rwandan succession laws (spouse/children inherit).
+
+Government Housing Programs: If the deceased was part of a subsidized housing scheme (e.g., Agaciro Kanimba), ownership typically transfers to legal heirs.
+
+3. Health Insurance (Community-Based Health Insurance - CBHI/Mutuelles de Santé)
+Coverage Ends at Death: The policy does not transfer, but surviving family members can re-enroll.
+
+Outstanding Medical Bills: Any unpaid healthcare costs may become the family’s responsibility.
+
+4. tion &amp; Child Support Programs
+Scholarships: If a sponsored child dies, the funding usually stops.
+
+Orphan Support Programs: If a caregiver dies, the child may be reassessed for continued assistance.
+
+5. Business &amp; Livelihood Support (Loans, Grants, Training)
+Microfinance Loans: Family members may inherit the debt if they were co-signers.
+
+Grants/Assets: Equipment or livestock may remain with the household if the project allows.
+
+6. Refugee &amp; Humanitarian Programs
+UNHCR/Red Cross Support: If a refugee dies, their dependents (spouse/children) may continue receiving aid.
+
+Burial Assistance: Some NGOs provide funeral support for vulnerable groups.
+
+Key Steps After a Beneficiary’s Death
+Report the Death – Inform the project administrators (NGO, government office).
+
+Check for Survivor Benefits – Some programs extend support to family members.
+
+Legal &amp; Inheritance Process – If assets (land, housing, livestock) are involved, heirs must follow legal procedures.
+
+Conclusion
+Most projects do not automatically transfer benefits unless specified (e.g., housing, land, or family-based programs). Surviving family members may need to reapply for assistance. Each case depends on the project’s rules and Rwandan law.
+
+Would you like details on a specific type of project (e.g., agriculture, healthcare, housing)?
+                        
+                    </div>
+                </div>
+                
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg text-blue-800 focus:outline-none">
+                        <span> what is the time for a person to be released</span>
+                        <svg class="w-5 h-5 text-blue-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-3 text-gray-600 hidden">
+                        Mu Rwanda, imishinga myinshi y’abaterankunga (sponsorship programs) ikoresha igihe cy’imyaka 3–21 bitewe n’uko inkunga itangwa n’aho umwana ageze mu buzima n’amashuri
+                    </div>
+                </div>
+                
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg text-blue-800 focus:outline-none">
+                        <span>after the help, there is nothing else that the helper can do?</span>
+                        <svg class="w-5 h-5 text-blue-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-3 text-gray-600 hidden">
+                        
+    <h1>Ese umushinga waguhaye ubufasha ugishobora kukwiguriza amafaranga nyuma yo kurangira?</h1>
+
+    <p>
+      Ndumva ushaka kumenya niba umushinga w’ubufasha, umaze kurangira, ushobora kuba ugifite uburenganzira bwo gusaba cyangwa guhabwa amafaranga
+      nyuma y’uko uwo mushinga urangije. Ibisubizo bihinduka bitewe n’uko ibintu byanditse muri ayo masezerano n’amabwiriza y’umushinga.
+    </p>
+
+    <h2>Biterwa n’amasezerano n’amabwiriza</h2>
+    <p>
+      Niba hari amasezerano yanditse (nka MOU, contract, cyangwa politiki y’umushinga) yavugaga ko hari amafaranga cyangwa inkunga izatangwa nyuma y’igihe,
+      ayo masezerano niyo akurikizwa. Ariko niba nta masezerano yanditse ahari, akenshi nta muntu uba ugomba kwishyurwa nyuma y’uko umushinga urangije.
+    </p>
+
+    <h2>Itandukaniro hagati y’umukozi n’umufashwa (beneficiary)</h2>
+    <p>
+      Iyo umuntu yari <strong>umukozi</strong> w’umushinga (yakoraga akazi ahabwa umushahara), ashobora kugira uburenganzira ku mishahara ya nyuma,
+      indembe cyangwa andi mafaranga bitewe n’amasezerano n’amategeko y’akazi. Ariko iyo umuntu yari <strong>umufashwa</strong> (yakiraga inkunga cyangwa serivisi),
+      akenshi ntibamwishyura amafaranga nyuma y’uko umushinga urangije—uretse niba hari ibyo bemeranyije byihariye.
+    </p>
+
+    <h2>Inkunga zifatika n’ibivugwa mu masezerano</h2>
+    <p>
+      Hari igihe umushinga utanga ibintu birambye (nko imashini, igishoro, ubwishingizi cyangwa ubutaka). Niba byari byavuzwe ko ibyo bintu bizasigara ku mufashwa,
+      bizasigara. Niba ari inguzanyo, hari amategeko n’imiterere y’inguzanyo agena niba igomba kwishyurwa.
+    </p>
+
+    <h2>Icyo wakora kugirango umenye neza</h2>
+    <p>
+      Saba kopi y’amasezerano cyangwa inyandiko zerekana uko inkunga yagenewe. Vugana n’abayobozi b’umushinga usabe ibisobanuro byanditse.
+      Niba ari ikibazo cy’umushahara, shaka inama mu kigo gishinzwe abakozi (labour office) cyangwa umwunganizi mu by’amategeko.
+    </p>
+
+    <h2>Aho ushobora gusaba ubufasha</h2>
+    <p>
+      Ushobora kwegera abayobozi b’umushinga, umukozi ushinzwe abakiriya/beneficiaries, ubuyobozi bw’umudugudu cyangwa akarere, ndetse n’imiryango
+      yunganira abaturage mu by’amategeko cyangwa amashyirahamwe y’abafatanyabikorwa (NGO forum) kugira ngo bagufashe gusobanukirwa no gukemura ikibazo.
+    </p>
+
+    <div class="note">
+      <strong>Icyitonderwa:</strong> Niba wifuza, nakugenera urugero rw’inyandiko (letter/email) yo gusaba ibisobanuro ku mushinga, cyangwa nkagufasha kuyitunganya
+      mu Kinyarwanda cyangwa mu rundi rurimi. Mbwira icyo wifuza.
+    </div>
+  
+
+                    </div>
+                </div>
+                
+                <div class="mb-6 border-b border-gray-200 pb-6">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-semibold text-lg text-blue-800 focus:outline-none">
+                        <span>what mistake can be made so that the person in the project will be fired.?</span>
+                        <svg class="w-5 h-5 text-blue-600 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer mt-3 text-gray-600 hidden">
+                        <h1>Amakosa Ashobora Gutuma Umwana Avanwaho mu Mushinga w'Ubufasha</h1>
+
+    <p>
+      Niba umwana ari mu mushinga ufasha imbabare (nk’aho ahabwa inkunga, ubufasha, cyangwa kwitabwaho),
+      hari amakosa ashobora gutuma bamukuramo cyangwa bamuhagarika muri uwo mushinga. Aha hasi hari urutonde
+      rw'ibyo bakunze kubona nk'ibigomba gukosorwa cyangwa impamvu zishobora gutuma bafata icyemezo cyo kumukuraho.
+    </p>
+
+    <ol>
+      <li><strong>Kwitwara nabi cyane ku bandi</strong> — gusuzugura, gutuka, cyangwa gukubita abandi bari muri uwo mushinga.</li>
+      <li><strong>Kwangiza ibintu by’umushinga</strong> — gusenya, kwiba, cyangwa kurangaza ibintu bahawe kugira ngo bifashe bose.</li>
+      <li><strong>Gukora ubujura</strong> — kwiba ku bandi bana cyangwa ku bantu bakorana n’umushinga.</li>
+      <li><strong>Kutubahiriza amategeko y’umushinga</strong> — nko gutoroka ibikorwa, kutitabira ku bushake, cyangwa guhora arwanya abayobozi.</li>
+      <li><strong>Gukoresha ibiyobyabwenge cyangwa inzoga</strong> — cyane cyane iyo bihabanye n’amategeko n’amabwiriza y’umushinga.</li>
+      <li><strong>Kujya mu bikorwa by’ubugizi bwa nabi</strong> — urugero kwifatanya n’imitwe y’abajura cyangwa ibikorwa by’urugomo.</li>
+      <li><strong>Kubeshya cyangwa guhimba inkuru</strong> — gutanga amakuru atari yo ku byerekeye ubuzima bwe cyangwa ibikenerwa.</li>
+      <li><strong>Kutia ku burere</strong> — gukora ibikomeretsa abandi bana cyangwa abakozi, cyangwa kwirengagiza amategeko y'uburere.</li>
+    </ol>
+
+    <p class="note">
+      Ingamba: Muri rusange, mishinga myinshi ibanza kugerageza <strong>guhugura no gukosora</strong> umwana mbere yo kumwirukana.
+      Ariko iyo amakosa akomeje cyangwa ari akomeye cyane, bafata icyemezo cyo kumuhagarika kugira ngo barinde abandi
+      banyamuryango n'umutekano w'umushinga.
+    </p>
+
+    <p>
+      Nshobora no kukugirira urugero rw’inkuru (case study) y’umwana wakoze amakosa akomeye mu mushinga kugira ngo wumve neza
+      uko inzira yo gukosora cyangwa gukuraho umwana ishobora kuba. Ushaka ko nyikora?
+    </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions & Feedback Section -->
+    <section id="questions" class="py-32 bg-gradient-to-br  to-indigo-100">
+        <div class="container mx-auto px-auto">
+            <div class="max-w-auto mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-blue-800 mb-4">Questions About Rwanda Project Act RW 0374</h2>
+                    <p class="text-xl text-gray-600">Share your questions, thoughts, and feedback about the project</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-2xl p-8">
+                    <form id="rw0374QuestionForm" class="space-y-8">
+                        <!-- Contact Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="fullName" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Full Name <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="fullName" name="fullName" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Email Address <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="organization" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Organization/Institution
+                                </label>
+                                <input type="text" id="organization" name="organization" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                            </div>
+                            
+                            <div>
+                                <label for="role" class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Your Role
+                                </label>
+                                <select id="role" name="role" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+                                    <option value="">Select your role</option>
+                                    <option value="researcher">Researcher</option>
+                                    <option value="student">Student</option>
+                                    <option value="policy-maker">Policy Maker</option>
+                                    <option value="community-leader">Community Leader</option>
+                                    <option value="ngo-representative">NGO Representative</option>
+                                    <option value="government-official">Government Official</option>
+                                    <option value="beneficiary">Project Beneficiary</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Questions Section -->
+                        <div>
+                            <label for="questions" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Your Questions About RW 0374 <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="questions" name="questions" rows="4" required="" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Please share your specific questions about the Rwanda Project Act RW 0374..."></textarea>
+                        </div>
+
+                        <!-- Thoughts Section -->
+                        <div>
+                            <label for="thoughts" class="block text-sm font-semibold text-gray-700 mb-2">
+                                Your Thoughts &amp; Suggestions
+                            </label>
+                            <textarea id="thoughts" name="thoughts" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Share your thoughts, suggestions, or additional feedback about the project..."></textarea>
+                        </div>
+
+                        <!-- Interest Areas -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-3">
+                                Areas of Interest (Check all that apply)
+                            </label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="policy-framework" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Policy Framework</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="implementation-strategy" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Implementation Strategy</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="community-impact" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Community Impact</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="funding-mechanisms" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Funding Mechanisms</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="beneficiary-stories" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Beneficiary Stories</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="interests[]" value="monitoring-evaluation" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                                    <span class="text-gray-700">Monitoring &amp; Evaluation</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-300 transition duration-300 transform hover:scale-105 shadow-lg">
+                                Submit Questions &amp; Feedback
+                            </button>
+                        </div>
+
+                        <!-- Success Message -->
+                        <div id="successMessage" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+                            <strong>Thank you!</strong> Your questions and feedback have been submitted successfully. We'll respond to your email within 72 hours.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-blue-600 rounded-lg p-8">
+        <div class="container mx-auto px-12">
+            <div class="max-w-6xl mx-auto">
+                <div class="md:flex md:space-x-12 space-y-12 md:space-y-0">
+                    <div class="md:w-1/3">
+                        <h3 class="text-2xl font-bold mb-4">RW 0374 Compensation Commission</h3>
+                        <p class="mb-4 text-blue-200">Ministry of Justice, Government of Rwanda</p>
+                        <div class="space-y-2 text-blue-200">
+                            <p>KG 7 Ave, Kigali, Rwanda</p>
+                            <p>P.O Box 1659</p>
+                            <p>Phone: +250 788 123 456</p>
+                            <p>Email: commission@rw374.gov.rw</p>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/3">
+                        <h3 class="text-2xl font-bold mb-4">Office Hours</h3>
+                        <div class="space-y-2 text-blue-200">
+                            <p class="flex justify-between"><span>Monday - Friday:</span> <span>8:00 AM - 5:00 PM</span></p>
+                            <p class="flex justify-between"><span>Saturday:</span> <span>7:00 AM - 4:00 PM</span></p>
+                            <p class="flex justify-between"><span>Sunday:</span> <span>Closed</span></p>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mt-6 mb-4">District Offices</h3>
+                        <p class="text-blue-200">RW 0374 services are available at all district administration offices across Rwanda.</p>
+                    </div>
+                    
+                    <div class="md:w-1/3">
+                        <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                        <div class="grid grid-cols-2 gap-4 text-blue-200">
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Download Forms</a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Claim Status</a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">FAQs</a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Compensation Rates</a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">News &amp; Updates</a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Appeal Procedures</a>
+                        </div>
+                        
+                        <div class="mt-8 flex space-x-4">
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="w-30 h-30 rounded-full flex items-center justify-center transition">
+                            <svg viewBox="0 0 64 64" fill="#1877F3" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;"><circle cx="32" cy="32" r="32" fill="#1877F3"></circle><path d="M44 32.1c0-6.6-5.4-12-12-12s-12 5.4-12 12c0 6 4.4 10.9 10.1 11.8v-8.3h-3v-3.5h3v-2.7c0-3 1.8-4.7 4.5-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 1-2 2v2.3h3.4l-.5 3.5h-2.9v8.3C39.6 43 44 38.1 44 32.1z" fill="#fff"></path></svg>
+                            </a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="w-30 h-30 rounded-full flex items-center justify-center transition">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;"><circle cx="32" cy="32" r="32" fill="#1DA1F2"></circle><path d="M48 22.5a10.2 10.2 0 0 1-2.9.8 5.1 5.1 0 0 0 2.2-2.8 10.2 10.2 0 0 1-3.2 1.2 5.1 5.1 0 0 0-8.7 4.6A14.5 14.5 0 0 1 20.6 21a5.1 5.1 0 0 0 1.6 6.8 5.1 5.1 0 0 1-2.3-.6v.1a5.1 5.1 0 0 0 4.1 5 5.1 5.1 0 0 1-2.3.1 5.1 5.1 0 0 0 4.8 3.6A10.3 10.3 0 0 1 16 41.1a14.5 14.5 0 0 0 7.9 2.3c9.5 0 14.7-7.9 14.7-14.7v-.7A10.5 10.5 0 0 0 48 22.5z" fill="#fff"></path></svg>
+                            </a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="w-30 h-30 rounded-full flex items-center justify-center transition">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;"><circle cx="32" cy="32" r="32" fill="#FF0000"></circle><path d="M44.8 27.2c-.2-1.2-1.2-2.2-2.4-2.4C40.2 24 32 24 32 24s-8.2 0-10.4.8c-1.2.2-2.2 1.2-2.4 2.4C18 29.4 18 32 18 32s0 2.6.8 4.8c.2 1.2 1.2 2.2 2.4 2.4C23.8 40 32 40 32 40s8.2 0 10.4-.8c1.2-.2 2.2-1.2 2.4-2.4.8-2.2.8-4.8.8-4.8s0-2.6-.8-4.8zM28.8 36V28l8 4-8 4z" fill="#fff"></path></svg>
+                            </a>
+                            <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="w-30 h-30 rounded-full flex items-center justify-center transition">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;"><circle cx="32" cy="32" r="32" fill="#25D366"></circle><path d="M44.1 39.1c-.6-.3-3.5-1.7-4-1.9-.5-.2-.9-.3-1.3.3-.4.6-1.5 1.9-1.8 2.3-.3.4-.7.5-1.3.2-.6-.3-2.5-.9-4.7-2.8-1.7-1.5-2.8-3.3-3.1-3.9-.3-.6 0-.9.3-1.2.3-.3.6-.7.9-1.1.3-.4.4-.7.6-1.1.2-.4.1-.8 0-1.1-.1-.3-1.3-3.1-1.8-4.3-.5-1.2-1-1-1.3-1-.3 0-.7 0-1.1.5-.4.5-1.5 1.5-1.5 3.6 0 2.1 1.5 4.1 1.7 4.4.2.3 3.1 4.7 7.5 6.3 1 .3 1.8.5 2.4.6 1 .2 1.9.2 2.6.1.8-.1 2.5-1 2.8-2 .3-1 .3-1.8.2-2-.1-.2-.5-.3-1.1-.6z" fill="#fff"></path></svg>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+    <footer class="bg-blue-600 rounded-lg p-8">
+        <div class="container mx-auto px-12">
+            <div class="md:flex md:justify-between ">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="w-8 h-8 rounded-full bg-white mr-2 overflow-hidden">
+                        <img src="./code kwi ca.html_files/mover.npj.jpg" alt="Footer icon" class="w-20 h-20 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;">
+                    </div>
+                    <span class="font-bold">RW 374</span>
+                </div>
+                
+                <div class="text-sm text-blue-300">
+                    <p>© 2024 Rwanda project Act RW 374. All rights reserved.</p>
+                    <p class="mt-1">A Ministry of help full, Government of Rwanda</p>
+                </div>
+                
+                <div class="mt-4 md:mt-0 text-sm text-blue-300">
+                    <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Privacy Policy</a>
+                    <span class="mx-2">|</span>
+                    <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Terms of Service</a>
+                    <span class="mx-2">|</span>
+                    <a href="file:///C:/Users/umuku/Desktop/-/$$$/New%20folder/comp/code%20kwi%20ca.html.html#" class="hover:text-white transition">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50 floating-btn">
+        <button class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xl hover:bg-blue-700 transition focus:outline-none">
+            <img src="Human.NPG.jpg" alt="Question mark icon representing help and support for RW 374 claims process" class="w-16 h-16 hover-scale-effect rounded-full object-cover" style="box-shadow:none; background:none;">
+        </button>
+        <P class="bg-red-50 p-6 rounded-lg shadow-sm border border-red-20">Note: If you are a visitor to the site, do not refresh the page.</P>
+    </div>
+
+    <script>
+
+
+        // Detail data for all buttons
+        const detailData = [
+// ...existing code...
+            {img: '', text: 'V.2. UKO URUBYIRUKO RUFASHWA MU GUHINDURA UBUZIMA BWABO MU BURYO BWUZUYE  Umushinga twashyizeho gahunda yo guteza imbere urubyiruko tubigisha mu buryo butandukanye kugirango babashe kugira aho bivana naho bigeza. Ni muri urwo rwego twashyizeho gahunda yo kwita kurubyiruko mugihe cya vacance aho tubategurira inyigisho zitandukanye tukabifashwamo n’umuryango w’umusomyi wa Bibiriya mu Rwanda hakaba hategurwa inyigisho zirimo uko bakwirinda ibiyobyabwenge, kwirinda uburaya n’inda zitateganijwe, ndetse no kwihangira imirimo kugirango batangire bige gukora.  Umushinga kandi twashyizeho gahunda zo kwiga gukora ibintu bitandukanye, aho muri Extrat Curriculum biga gukora amandazi bamara kuyakora bagenzi babo bakayanywesha igikoma kuwa gatandatu byazamuye umubare w’abana bitabira gahunda y’umushinga. Ikindi abana n’urubyiruko bigishijwe gukora ibikapu. Abana biga n’abasoje gahunda bishyira hamwe bakadodera bagenzi babo ibikapu byo gutwaramo ibikoresho by’ishuri.  Kubijyanye n’ubuzima, habonekaga imbogamizi ku bana b’abakobwa zo gusiba ishuri ndetse n’umushinga mu gihe bagiye mu mihango twashyizeho gahunda yo kwigisha abana n’urubyiruko gukora Cotex haba muburwo bwa gakondo no muburyo bujyanye n’igihe (modern) aho bikorera cotex yaba afite urushinge, urudodo n’udutambaro gusa yibereye iwabo mu rugo cyangwa imashini n’indodo n’ibitambaro ku babifite. Ibyo byatumye nta mwana w’umukobwa ugisiba ishuri cyangwa u.'},
+            {img: '', text: `<table class="table-auto w-full border border-gray-300 mb-6">
+  <caption class="font-bold text-lg mb-2">DEVELOPMENT ACTIVITIES THAT ASSIST PARENTS</caption>
+  <thead class="bg-blue-100">
+    <tr>
+      <th class="border px-2 py-1">Category</th>
+      <th class="border px-2 py-1">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-2 py-1">Youth Support</td>
+      <td class="border px-2 py-1">261+</td>
+      <td class="border px-2 py-1">Training in life skills, entrepreneurship, anti-drug education, making school bags, snacks, and sanitary pads. No girl misses school due to lack of pads.</td>
+    </tr>
+    <tr>
+      <td class="border px-2 py-1">Small Businesses</td>
+      <td class="border px-2 py-1">82</td>
+      <td class="border px-2 py-1">Families running small shops, selling produce, mobile money, soap, and cross-border milk trade.</td>
+    </tr>
+    <tr>
+      <td class="border px-2 py-1">Livestock Projects</td>
+      <td class="border px-2 py-1">16</td>
+      <td class="border px-2 py-1">Families raising chickens, goats, pigs, and benefiting from livestock gifts.</td>
+    </tr>
+    <tr>
+      <td class="border px-2 py-1">Handicrafts & Vocational</td>
+      <td class="border px-2 py-1">261</td>
+      <td class="border px-2 py-1">Youth making school/travel bags, snacks, pads, and learning hairdressing/barbering.</td>
+    </tr>
+    <tr>
+      <td class="border px-2 py-1">Hygiene & Environment</td>
+      <td class="border px-2 py-1">109</td>
+      <td class="border px-2 py-1">Families trained in kitchen gardens, improved toilets, new houses, and advocacy for housing.</td>
+    </tr>
+    <tr>
+      <td class="border px-2 py-1">Family Development</td>
+      <td class="border px-2 py-1">23</td>
+      <td class="border px-2 py-1">Savings, land purchase, and support from VUP program for future security.</td>
+    </tr>
+   
+  </tbody>
+</table>`},
+            {img: '', text: 'Community development in the RW0374 project means achieving prosperity and healthy living for all. The project, supported by Compassion International, focuses on improving the well-being and capabilities of parents and families. By helping parents make the most of available resources and leveraging local strengths, the project encourages teamwork, knowledge sharing, and collective action for income-generating activities. Implementation includes home visits and group meetings to provide training and support, ensuring that families are empowered to build better lives together.'},
+            {img: '', text: 'Strategic planning in the RW374 project is a collaborative process led by the church and project staff. It begins with gathering information from beneficiary households to understand their living conditions, challenges, needs, and development aspirations. The church collects data from various sectors, including health centers, schools, local government, security agencies, religious organizations, immigration, legal professionals, cooperative development agencies, private sector representatives, and cultural rehabilitation centers, to identify pressing issues in the community. All stakeholders—including sector representatives, beneficiary leaders, and parents—are invited to analyze these challenges together and seek sustainable solutions. The analysis prioritizes the most critical problems, and joint strategies are developed, clearly defining the role of each sector in addressing them. The church then implements the agreed-upon action plan with these partners and monitors progress toward the set goals.'},
+            {img: '', text: 'The implementation plan in the RW374 project focuses on understanding each beneficiary’s unique situation and building trust through empathy and support. The team works to restore hope and confidence, helping individuals find solutions to their challenges. Group formation and cooperatives are encouraged to unite efforts for greater impact, with advocacy provided through CIV, HVC, and IGAs. Beneficiaries receive training in entrepreneurship and innovation to ensure their activities remain valuable and sustainable. Timely reporting and the use of Compassion Connect are emphasized for effective monitoring, and prayer is an integral part of the process to seek guidance and success.'},
+            {img: '', text: 'Over the past three years, the RW374 project has addressed several key issues affecting beneficiary families. These include poverty caused by unemployment, health problems linked to poor hygiene, and fragmented efforts due to a lack of group activities. Child malnutrition was a significant concern in the area. The project also tackled family conflicts, such as lack of honesty, neglect of children, and polygamy. Social pressures led to early marriages, unplanned pregnancies, and involvement in drugs and prostitution. Additionally, limited knowledge and skills in group and cooperative activities hindered progress, with many not understanding the benefits of working together or how to combine their efforts for greater impact.'},
+            {img: '', text: '<table class="table-auto w-full border border-gray-300 mb-6">\n  <caption class="font-bold text-lg mb-2">Poverty Graduation 2024-2025: Status in Two Sectors</caption>\n  <thead class="bg-blue-100">\n    <tr>\n      <th class="border px-2 py-1">No</th>\n      <th class="border px-2 py-1">Sector</th>\n      <th class="border px-2 py-1">In Sector Database</th>\n      <th class="border px-2 py-1">In Project Database</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class="border px-2 py-1">1</td>\n      <td class="border px-2 py-1">Gisenyi</td>\n      <td class="border px-2 py-1">489</td>\n      <td class="border px-2 py-1">6</td>\n    </tr>\n    <tr>\n      <td class="border px-2 py-1">2</td>\n      <td class="border px-2 py-1">Rubavu</td>\n      <td class="border px-2 py-1">1524</td>\n      <td class="border px-2 py-1">16</td>\n    </tr>\n    <tr class="font-bold">\n      <td class="border px-2 py-1" colspan="2">Total</td>\n      <td class="border px-2 py-1">2013</td>\n      <td class="border px-2 py-1">22</td>\n    </tr>\n  </tbody>\n</table>   '},
+            
+                {img: '', text: 'umushinga wacu ugamije guteza imbere urubyiruko nabana binyuze munyigisho zitandukanye zigamije kubafasha kwiteza imbere no kwirinda ibishobora kubangiriza ejohazaza. murigahunda zacu twateguye amasomo mu gihe cya vacance afasha ururubyiruko kwirinda ibiyobyabwenge, uburaya, inda zitateganijwe, ndetse no kwihangira imirimo. Twashyizeho kandi gahunda ya Extracurricular aho abana biga gukora amandazi n’ibikapu, bikabafasha kwiga umwuga no gukorera hamwe. Ku bijyanye n’ubuzima, twafashije abana b’abakobwa kwiga gukora Cotex, haba mu buryo bwa gakondo cyangwa bugezweho, kugira ngo ntihagire usiba ishuri cyangwa gahunda z’umushinga kubera imihango. Izi gahunda zose zatumye urubyiruko n’abana barushaho kwitabira ibikorwa by’umushinga, bikabafasha kwiteza imbere no kugira uruhare mu iterambere ryabo n’iry’umuryango'},
+
+            {img: '', text: ' We empower families to find their own solutions by fostering self-reliance and resilience. Through targeted awareness campaigns and continuous monitoring, we strengthen the capacity of parent groups to effectively support their communities. We facilitate networking and collaboration between groups and other sectors to enhance trade and resource sharing. Regular visits and follow-ups ensure the sustainability and progress of group activities. Additionally, we promote a culture of saving and encourage innovation within groups to drive sustainable economic and social development.'},
+            {img: '', text: ` <table class="table-auto w-full boeder border-gray-300 mb-6">
+            <caption class="font-bold text-lg mb-2">IMIBANIRE MYIZA, N'IBIKORWA REMEZO</caption>
+            <thead class="bg-blue-100">
+               
+             <tbody>
+            <tr>
+                <th class="border px-2 py-1">IBIKORWA</th>
+                <th class="border px-2 py-1">UMUBARE</th>
+                <th class="border px-2 py-1">UBUSOBANURO</th>
+            </tr>
+            <tr>
+                <td class="border px-2 py-1">Gusezerana ku babanaga badasezeranye</td>
+                <td class="border px-2 py-1">27</td>
+                <td class="border px-2 py-1">Iyi miryango y'ababanaga itarasezeranye yamaze gusezerana ni 8. Hari indi miryango 6 yagaragaraga ko itasezeranye (ikibazo ari uko batibonaga muri systeme), ariko mu byukuri yarasezeranye, ikorerwa ubuvugizi yibona mu irangamimerere. Abandi nabo turacyari mu rugendo tubaganiriza.</td>
+            </tr>
+            <tr>
+                <td class="border px-2 py-1">Ibikorwa remezo</td>
+                <td class="border px-2 py-1">4</td>
+                <td class="border px-2 py-1">Itorero ryashoboye kwishakamo ubushobozi ribasha kubaka ibyumba 8 abana bigiramo, ryabashije kubaka urusengero rujyanye n'igihe abana basengeramo, bubatse Cloture mu rwego rwo kurinda abana kujya kuzerera mu isoko. Muri CIV twubatsemo ubwiherero.</td>
+            </tr>
+            </tbody>
+        </table>`},
+            {img: '', text:` <table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">UKO TUGENDA DUFASHA IMIRYANGO KWIHANGIRA IMIRIMO Y'ITERAMBERE BIJYANYE N'IBIBAZO BYAGARAGAYE MU 
+ITEGURWA RYA STRATEGIC PLAN</caption> 
+                <thead class="bg-blue-100">
+                    <tr class="header-row">
+                        <th rowspan="2">Issue Category</th>
+                        <th colspan="2" class="period-header">July 2022 - June 2023</th>
+                        <th colspan="2" class="period-header">July 2023 - June 2024</th>
+                        <th colspan="2" class="period-header">July 2024 - June 2025</th>
+                        <th class="period-header">Total Issues</th>
+                        <th class="period-header">Solved Issues</th>
+                        <th class="period-header">Issues Being Addressed</th>
+                    </tr>
+                    <tr class="header-row">
+                        <th>Issues</th>
+                        <th>Solved</th>
+                        <th>Issues</th>
+                        <th>Solved</th>
+                        <th>Issues</th>
+                        <th>Solved</th>
+                        <th>(1,448)</th>
+                        <th>(1,271)</th>
+                        <th>(177)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="issue-description">Ikibazo cyimyumvire mike ku myigire y'abana<br>(Child discipline issues)</td>
+                        <td>78</td>
+                        <td>8</td>
+                        <td>70</td>
+                        <td>14</td>
+                        <td>56</td>
+                        <td>12</td>
+                        <td>44</td>
+                        <td>13</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td class="issue-description">Ikibazo cy'ubukene buterwa no kubura imirimo<br>(Laziness and job abandonment)</td>
+                        <td>339</td>
+                        <td>89</td>
+                        <td>250</td>
+                        <td>64</td>
+                        <td>186</td>
+                        <td>42</td>
+                        <td>144</td>
+                        <td>21</td>
+                        <td>112</td>
+                    </tr>
+                    <tr>
+                        <td class="issue-description">Ubumenyi mu kwirinda indwara/Health Prevention and Promotion</td>
+                        <td>339</td>
+                        <td>97</td>
+                        <td>242</td>
+                        <td>58</td>
+                        <td>184</td>
+                        <td>64</td>
+                        <td>120</td>
+                        <td>24</td>
+                        <td>96</td>
+                    </tr>
+                    <tr>
+                        <td class="issue-description">Ingufu zitatanye (Lack of cooperation in activities that yield benefits)</td>
+                        <td>339</td>
+                        <td>180</td>
+                        <td>159</td>
+                        <td>48</td>
+                        <td>111</td>
+                        <td>52</td>
+                        <td>59</td>
+                        <td>38</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td class="issue-description">Ubumenyi n'ubushobozi buke mu byamatsinda, n'amakoperative<br>(Lack of knowledge and skills in cooperatives)</td>
+                        <td>339</td>
+                        <td>178</td>
+                        <td>161</td>
+                        <td>92</td>
+                        <td>69</td>
+                        <td>69</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td class="issue-description">Igwingira mu muryango<br>(Family conflicts)</td>
+                        <td>14</td>
+                        <td>11</td>
+                        <td>3</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="summary-row">
+                        <td>Total</td>
+                        <td>1,448</td>
+                        <td>563</td>
+                        <td>885</td>
+                        <td>276</td>
+                        <td>606</td>
+                        <td>239</td>
+                        <td>367</td>
+                        <td>96</td>
+                        <td>259</td>
+                    </tr>
+                </tbody>
+            </table>  
+            
+            <div class="explanation">
+            <h2>Analysis Summary</h2>
+            <p><strong>Total Issues Identified:</strong> 1,448</p>
+            <p><strong>Total Issues Solved:</strong> 1,271</p>
+            <p><strong>Issues Currently Being Addressed:</strong> 177</p>
+            
+            <h3>Key Observations:</h3>
+            <ul>
+                <li>The most prevalent issue category is "Lack of cooperation in activities that yield benefits" with 339 cases in the first period.</li>
+                <li>"Lack of knowledge and skills in cooperatives" shows a significant decrease over time, from 339 cases to 0 in the latest period.</li>
+                <li>"Child discipline issues" remain relatively consistent across all periods.</li>
+                <li>There's been a significant improvement in solving issues, with 1,271 out of 1,448 issues resolved (87.8% success rate).</li>
+            </ul>
+        </div>`
+
+            },
+            {img: '', text: ` Bimwe mubikoresho twifashisha «TUGIRE UBUZIMA BWIZA IWACU» 
+UBURYO BUCIRIRITSE BWO KWITEZA IMBERE MU BIJYANYE N’UBUKUNGU MU 
+MURYANGO 
+(Iterambere rirambye ry’abana, urubyiruko ndetse n’imiryango yabo)
+   Gufasha imiryango kwishakamo ibisubizo
+    Gukora ubukangurambaga, gukurikirana no kongerera ubushobozi amatsinda 
+y’ababyeyi.
+    Gufasha amatsinda kugira ubuhahirane n’izindi nzego (Networikng)
+    Gusura, kugenzura no gukurikirana ibikorwa by’amatsinda
+    Guteza imbere umuco wo kuzigama
+    Guhanga udushya mu matsinda`},
+            {img: '', text: 'Twagize umugisha w’ababyeyi bari bari mu buzima bubi aho wasangaga hari imiryango itagira aho kuba (Icumbi)  abandi batagira Ubwiherero abandi ugasanga ntacyo gukora bafite bitewe no kubura igishoro  ariko uyu munsi ubuzima bwabo bukaba bwarahindutse  Aho  usanga twarubakiye imiryango amazu yo kubamo igera ku 8,Twubatse ubwiherero 35,twaremeye imiryango 12 babasha kubona igishoro cyo gucuruza ,kandi usanga bitunze imiryango myinshi ,ubu babasha kwibonera ubwisungane mu kwivuza,kwishyurira abana amashuri,kubabonera ibyibanze byingenzi bisabwa mu buzima.  Ikindi bitewe nuko mumuco wacu abagore bari bazwi nka bantu badashoboye arabo kwicara murugo bagahabwa buri kimwe cyose ubundi bakaba abo kubyara no kurera gusa  ,ubusi ko bimeze kuko usanga abagore aribo bakora aho abenshi bakora ubucuruzi bwambukiranya umupaka bajyana ibicuruzwa bitandukanye mu gihugu cya congo bakagira n’ibindi bazana urwo rujya nuruza buhindura imibereho  y’umuryango  mu bukungu kandi byatumye na bagore batinyuka bumva ko nabo bagomba gukora kugirango imiryango yabo itere imbere.'},
+            {img: '', text: `<table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">AMATSINDA ABANYAMURYANGO</caption>
+
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="border px-2 py-1">No</th>
+                        <th class="border px-2 py-1">Amatsinda</th>
+                        <th class="border px-2 py-1">Abanyamuryango</th>
+                        <th class="border px-2 py-1">Ubwizigame mu Gihembwe</th>
+                        <th class="border px-2 py-1">Amafaranga ari mubikorwa nayo bafite kuri Bank</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>EJO HEZA</td>
+                        <td class="number">33</td>
+                        <td class="number">1,224,900</td>
+                        <td class="number">11,961,520</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ABAHUJE</td>
+                        <td class="number">25</td>
+                        <td class="number">250,500</td>
+                        <td class="number">2,500,500</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>DUHUZIMBARAGA</td>
+                        <td class="number">27</td>
+                        <td class="number">389,000</td>
+                        <td class="number">1,759,000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>UMURAVA</td>
+                        <td class="number">13</td>
+                        <td class="number">340,000</td>
+                        <td class="number">3,243,200</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>TUZAMURANE B</td>
+                        <td class="number">15</td>
+                        <td class="number">72,000</td>
+                        <td class="number">840,000</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>TUZAMURANE A</td>
+                        <td class="number">35</td>
+                        <td class="number">85,000</td>
+                        <td class="number">874,000</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>UMUCYO</td>
+                        <td class="number">31</td>
+                        <td class="number">385,000</td>
+                        <td class="number">874,000</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>TUGIRUBUKIRE</td>
+                        <td class="number">8</td>
+                        <td class="number">68,000</td>
+                        <td class="number">246,000</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>UBUMWE</td>
+                        <td class="number">23</td>
+                        <td class="number">113,000</td>
+                        <td class="number">460,000</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>ABUNZUBUMWE</td>
+                        <td class="number">32</td>
+                        <td class="number">53,000</td>
+                        <td class="number">240,000</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>ABIZERANYE</td>
+                        <td class="number">21</td>
+                        <td class="number">68,000</td>
+                        <td class="number">455,000</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>DUFATANYE</td>
+                        <td class="number">10</td>
+                        <td class="number">64,000</td>
+                        <td class="number">391,000</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>TWISUNGANE MUBYEYI</td>
+                        <td class="number">16</td>
+                        <td class="number">548,000</td>
+                        <td class="number">548,660</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>IGISUBIZO</td>
+                        <td class="number">21</td>
+                        <td class="number">73,000</td>
+                        <td class="number">780,104</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>TWITEZIMBERE</td>
+                        <td class="number">17</td>
+                        <td class="number">69,000</td>
+                        <td class="number">426,016</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>ICYEREKEZO</td>
+                        <td class="number">22</td>
+                        <td class="number">76,000</td>
+                        <td class="number">76,000</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>DUKUNDUMURIMO</td>
+                        <td class="number">38</td>
+                        <td class="number">168,000</td>
+                        <td class="number">5,700,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td class="number"><strong>387</strong></td>
+                        <td class="number"><strong>4,046,400</strong></td>
+                        <td class="number"><strong>31,375,000</strong></td>
+                    </tr>
+                </tbody>
+            </table> 
+
+             <table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">AMATSINDA Y'URUBYIRUKO</caption>
+                <thead class="bg-blue-100"></thead>
+            
+                <tr>
+                        <th class="border px-2 py-1">No</th>
+                        <th class="border px-2 py-1">Amatsinda</th>
+                        <th class="border px-2 py-1">Abanyamuryango</th>
+                        <th class="border px-2 py-1">Ubwizigame mu Gihembwe</th>
+                        <th class="border px-2 py-1">Amafaranga ari mubikorwa nayo bafite kuri Bank</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>UNITY(Abana 6-14)</td>
+                        <td class="number">87</td>
+                        <td class="number">30,000</td>
+                        <td class="number">209,900</td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Vision(Urubyiruko15-18)</td>
+                        <td class="number">35</td>
+                        <td class="number">13,000</td>
+                        <td class="number">180,000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Hope(Urubyiruko19+)</td>
+                        <td class="number">32</td>
+                        <td class="number">7,800</td>
+                        <td class="number">125,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td class="number"><strong>154</strong></td>
+                        <td class="number"><strong>50,800</strong></td>
+                        <td class="number"><strong>514,900</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+             
+            <table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">AMATSINDA MAKURU</caption>
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="border px-2 py-1">No</th>
+                        <th class="border px-2 py-1">Amatsinda</th>
+                        <th class="border px-2 py-1">Abanyamuryango</th>
+                        <th class="border px-2 py-1">Ubwizigame mu Gihembwe</th>
+                        <th class="border px-2 py-1">Amafaranga ari mubikorwa nayo bafite kuri Bank</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>KOKWIBUBIRWA</td>
+                        <td class="number">243</td>
+                        <td class="number">225,000</td>
+                        <td class="number">5,354,000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2"><strong>Total</strong></td>
+                        <td class="number"><strong>243</strong></td>
+                        <td class="number"><strong>225,000</strong></td>
+                        <td class="number"><strong>5,354,000</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">TOTAL Y'AMAFARANGA YOSE Y'ABAFATANYABIKORWA</caption>
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="border px-2 py-1">Category</th>
+                        <th class="border px-2 py-1">Total Members</th>
+                        <th class="border px-2 py-1">Total Savings</th>
+                        <th class="border px-2 py-1">Total Bank Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Regular Groups</td>
+                        <td class="number">387</td>
+                        <td class="number">4,046,400</td>
+                        <td class="number">31,375,000</td>
+                    </tr>
+                    <tr>
+                        <td>Youth Groups</td>
+                        <td class="number">154</td>
+                        <td class="number">50,800</td>
+                        <td class="number">514,900</td>
+                    </tr>
+                    <tr>
+                        <td>Special Groups</td>
+                        <td class="number">243</td>
+                        <td class="number">225,000</td>
+                        <td class="number">5,354,000</td>
+                    </tr>
+                    <tr class="grand-total">
+                        <td><strong>GRAND TOTAL</strong></td>
+                        <td class="number"><strong>784</strong></td>
+                        <td class="number"><strong>4,322,200</strong></td>
+                        <td class="number"><strong>37,243,900</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+       
+            
+            `},
+            // ...existing code...
+            {img: '', text: 'Abantu baba mu matsinda bungukiyemo byinshi: bigishwa kwizigamira n\'ibyo babona, bakamenya kubana n’abandi no gusabana bakava mu bwigunge, bakigishwa gukora no gutinyuka, cyane cyane abagore bagashishikarizwa kwitinyuka kuko nabo bashoboye. Amatsinda atanga amahirwe yo kubona inguzanyo ku nyungu ntoya, bikorohereza abanyamuryango kwiteza imbere no kubona ibyo bakora bitunga imiryango yabo. Kuba mu itsinda bituma kumenya ibibazo biri mu miryango byoroha, abayobozi b’amatsinda (aba Mentor) bakamenya imibereho y’abayoborwa, bityo no gukemura ibibazo bikoroha. Amatsinda atuma buri munyamuryango agira ubwisungane mu kwivuza, bikarinda imfu ziturutse ku kurembera mu rugo, kandi abanyamuryango batangiye gutanga ejo heza bateganyiriza ejo hazaza habo..'},
+            {img: 'ngewe.npg.jpg', text: `  Twagize umugisha w’ababyeyi bari bari mu buzima bubi aho wasangaga hari imiryango 
+itagira aho kuba (Icumbi)  abandi batagira Ubwiherero abandi ugasanga ntacyo gukora 
+bafite bitewe no kubura igishoro  ariko uyu munsi ubuzima bwabo bukaba bwarahindutse
+  Aho  usanga twarubakiye imiryango amazu yo kubamo igera ku 8,Twubatse ubwiherero 
+35,twaremeye imiryango 12 babasha kubona igishoro cyo gucuruza ,kandi usanga bitunze 
+imiryango myinshi ,ubu babasha kwibonera ubwisungane mu kwivuza,kwishyurira abana 
+amashuri,kubabonera ibyibanze byingenzi bisabwa mu buzima.
+  Ikindi bitewe nuko mumuco wacu abagore bari bazwi nka bantu badashoboye arabo 
+kwicara murugo bagahabwa buri kimwe cyose ubundi bakaba abo kubyara no kurera gusa  
+,ubusi ko bimeze kuko usanga abagore aribo bakora aho abenshi bakora ubucuruzi 
+bwambukiranya umupaka bajyana ibicuruzwa bitandukanye mu gihugu cya congo bakagira 
+n’ibindi bazana urwo rujya nuruza buhindura imibereho  y’umuryango  mu bukungu kandi 
+byatumye na bagore batinyuka bumva ko nabo bagomba gukora kugirango imiryango yabo 
+itere imbere.`},
+            {img: '', text: `  Gahunda yo kwigisha abana kuwa gatandatu baje ku mushinga inyigisho 
+basanzwe babona arizo : ubugingo,Ubuzima,imibaniremyiza,Ubumenyi 
+n’ubukungu twasanze zigarukira hano kumushinga gusa kandi dukeneye 
+no gufasha umuryango muri Rusange umwana akomokamo.
+  Hashyizweho gahunda  yo kwigisha izo nyigisho zo kuwa gatandatu    
+binyuze mu itangazamakuru (radio)Social Medial)  kugirango izi nyigisho 
+zibashe kugera kuri benshi ubu rero ntabwo aya mahirwe akibonwa 
+n’abana bafashwa n’umushinga gusa ahubwo byafashe n’umuryango wose 
+kuko bakurikirana izo nyigisho kuri Radio  umuryango wose uri hamwe 
+ndetse n’abaturanyi  ,tukaba tubona iyi gahunda ari nziza kuko byatumye 
+twongera umubare w’abantu dufasha ,tukaba tubona bigenda bitanga 
+umusaruro kuko imyumvire y’ababyeyi tubona igenda ihinduka ugereranije 
+na mbere bataratangira gukurikirana inyigisho z’ikirezi.`},
+            {img: '', text: `  Mu bugingo hashyizweho gahunda ngaruka mwaka yo gukora ibiterane by’ivugabutumwa, 
+tukaba twarabitangije kuva 2022 kugeza uyu munsi, ibyo biterane bigamije kuzana 
+abantu kuri Yesu bitewe na gace dutuyemo kegeranye n’igihugu cya baturanyi cya congo 
+(DRC) kandi bo bakaba bafite imico itandukanye niyacu.
+  Bituma hagaragara imico itarimyiza harimo gukoresha ibiyobyabwenge 
+cyane,Uburaya,Ubwomanzi,ubusinzi,inda zitateganijwe, guta ishuri ku bana n’urubyiruko 
+nicyo cyatumye habaho izo ngamba zo gukora ibiterane ngaruka mwaka mugihe 
+cy’ibiruhuko tugafatanya n’ubuyobozi bw’igihugu cyacu aho bakatwemerera gukorera 
+ibiterane ahantu hahurira abantu benshi nko mu masoko ,mu centre z’uburuzi, Stade.  
+Muricyo gihe dutumira abavugabutumwa b’ijambo ry’Imana cyane cyane tukifashisha 
+abantu banyuze muri izo nzira nyuma bakazivamo bakakira Yesu nkumwami n’umukiza  
+bagatanga ubuhamya bakavuga ububi bwo gukoresha ibiyobyabwenge n’ingaruka zabyo, 
+iyo babyumvise bibakora ku mutima abenshi muri bagafata umwanzura wo gukizwa , iyo 
+bamaze kwihana umuntu ahabwa uburenganzira bwo kujya akomeza kujya asengera mu 
+Itorero rimwegereye. 
+ Tukaba dushima Imana ko byatanze umusaruro ufatika aho twabonye umubare w’abantu 
+benshi bakiriye Yesu nku mwami n’umukiza wabo bagera kuri 590 n’abandi 94 bavuye 
+mubiyobyabwenge, uwo musaruro ukaba ubonetse mu myaka 3 .`},
+            {img: '', text: `
+            
+         
+            
+            
+            <table class="table-auto w-full border border-gray-300 mb-6">
+                <caption class="font-bold text-lg mb-2">UBWITABIRE MUBITERANE BYO KURWANYA IBIYOBYABWENGE MU MYAKA 3 (2022-2024)</caption>
+
+            <thead class="bg-blue-100">
+                <tr>
+                    <th class="border px-2 py-1">IBIKORWA</th>
+                    <th class="border px-2 py-1">2022</th>
+                    <th class="border px-2 py-1">2023</th>
+                    <th class="border px-2 py-1">2024</th>
+                    <th class="border px-2 py-1">UMUSARURO UMAZE KUBONEKA (Total)</th>
+                </tr>
+            </thead>
+            <tbody>
+            <thead class="bg-red-100">
+                <tr> 
+                    <td colspan="5">ABITABIRIYE IBIKORWA</td>
+                </tr>
+             </thead>
+              
+                <tr>
+                    <td>Abantu bitabiriye ibiterane</td>
+                    <td>5,208</td>
+                    <td>3,499</td>
+                    <td>480</td>
+                    <td class="total">9,187</td>
+                </tr>
+                 <thead class="bg-red-100">
+                <tr>
+                    <td colspan="5">ABAKIYE YESU NK'UMWANI N'UMUKIZA</td>
+                </tr>
+                 </thead>
+                <tr class="subcategory">
+                    <td>Abakiye Yesu</td>
+                    <td>467</td>
+                    <td>111</td>
+                    <td>12</td>
+                    <td class="total">590</td>
+                </tr>
+                  <thead class="bg-red-100">
+                <tr class="category-header">
+                    <td colspan="5">ABAVUYE MUBIYOBYA BWENGE</td>
+                </tr>
+                  </thead>
+                <tr class="subcategory">
+                    <td>Abavuye mubiyobya bwenge</td>
+                    <td>58</td>
+                    <td>34</td>
+                    <td>2</td>
+                    <td class="total">94</td>
+                </tr>
+                
+                <tr class="highlight">
+                    <td><strong>TOTAL GENERAL</strong></td>
+                    <td><strong>5,733</strong></td>
+                    <td><strong>3,644</strong></td>
+                    <td><strong>494</strong></td>
+                    <td class="total"><strong>9,871</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 30px; padding: 15px; background-color: #e8f5e8; border-radius: 5px;">
+            <h4>Incamake:</h4>
+            <ul>
+                <li><strong>Umwanzuro w'imyaka 3:</strong> 9,187 abantu bitabiriye ibiterane</li>
+                <li><strong>Abakuye Yesu:</strong> 590 (6.4% by'abitabiriye)</li>
+                <li><strong>Abavuye mubiyobya bwenge:</strong> 94 (1.0% by'abitabiriye)</li>
+                <li><strong>Ibiterane byatangiye mu 2022</strong> bifite ubwitabire bukuru cyane (5,208)</li>
+                <li><strong>Mu 2024</strong> habayeho kugabanuka gakuru kubera insengero zafunzwe</li>
+            </ul>
+        </div>
+        
+        
+        
+        <div style="margin-top: 30px; padding: 15px; background-color: #e8f5e8; border-radius: 5px;">
+        
+        
+        
+            <h3>Ubusobanuro:</h3>
+            <p>Ibi biterane tubona bigira umusaruro ushimishije kuko byatanze impinduka kubuzima bwa benshi cyane cyane urubyiruko, 
+            kuko wasangaga rugenda rwangirika bitewe n'ibiyobya bwenge aho muri aka gacee kacu hagaragaraga umutwe w'urubyiruko 
+            rwiyise abuzukuru bashitani, ariko aho dutangiye gukora ibiterane dufatanyije n'inzego zitandukanye za Leta bigenda 
+            bigira umusaruro, n'ubwo mu mwaka wa 2024 twahuye n'imbogamizi z'uko insengero zari zarafunzwe n'urwacu rurimo 
+            kubera ko hari ibyo zitari zujuje bituma dukorera murusengero habaho ubwitabire buri hasi kuko tutakoreye aho 
+            twari dusanzwe dukorera.</p>
+            
+        </div>`},
+            {img: '', text: `  Imiterere y’agace dutuyemo bamwe mubafatanya bikorwa iyo bagize ikibazo 
+cy’amakimbirane bashakira ibisubizo mu guharika abo bashakanye,
+  Ubumenyi n’imyumvire mike mu byiza byo kwishyira hamwe
+  Ibura ry’imirimo yabaye mike kubera ikibazo umuturanyi wacu DRC afite cy’umutekano 
+muke bituma iterambere ryabo rigenda gake kuko abenshi bari bafite ibyo bakorerayo, 
+ariko ubu ntibakijyayo, bikongera ubukene mu miryango
+  Kwimuka byahato na hato «Uburyo bw’imiturire buhenze cyane usanga abantu benshi bacumbitse 
+bitewe n’agace dutuyemo k’amakoro, usanga ibikenerwa byose kugirango wubake ari ukubigura» (amabuye, 
+igitaka, amatafari n’ibindi bijyanye n’ubwubatsi)
+  Ubutaka bwo gukoreraho ibikorwa by’iterambere birahenze cyane, kubona 
+ubukode usanga bujyana inyungu hafi yazose babona
+  Gushaka imburagihe murubyiruko.`},
+            {img: '', text: `  Ababyeyi bafite abana n’urubyiruko baba mu mushinga abenshi babashije kujya mu matsinda 
+na Koperative bibafasha mubikorwa by’iterambere.
+  Twabashije kubahugura, kubongerera ubushobozi hakorwa ubuvugizi, ubu ababyeyi bafite 
+itsinda rikora isabune yitwa KEZA Saop (isabune ikomeye n’iyamazi) iyi sabune ikaba ifite 
+ibyangombwa byemewe mu Rwanda bitangwa n’ikigogishinzwe ubuziranenge
+  Ubu dufite Koperative KOKWIBUBIRWA (Iteza imbere Ubucuruzi n’abaguzi) Trading and 
+consumers: Gucuruza ibigori, umuceri, ibishyimbo, amasaka, soya, Ibirayi.
+  Koperative ifite umukozi bahemba ukurikirana imirimo yayo yaburi munsi n’ibaruramari.
+  Twatangiye gufasha amatsinda na Koperative gutangira abanyamuryango babo EJO HEZA no 
+kubafasha kwishyura MUSA ku gihe.
+  Buri muryango wose uba muri Koperative iyo agiye guhaha ahabwa service ibyo ahashye 
+akabigerezwa mu rugo ntakindi kiguzi yongeho.
+  Abana bari muri survival nta mwana ufite ibimenyetso byo kugwingira
+  Buri mubyeyi afite itsinda abarizwamo ryo kwiteza imbere kandi akizigamira buri kwezi`},
+            {img: '', text: `  1. Gukomeza kwita ku bana n’urubyiruko kubamenya byimbitse, turushaho kubakunda no 
+kubasura kenshi no gukumira icyatuma batagera kunzozi zabo z’ejo heza 
+ 2. Gukomeza gushyira imbaraga mu matsinda kuyegera cyane harimo kubasura kenshi no 
+kubakorera ubuvugizi aho bishoboka, bakana shaka abandi bafatanyabikorwa 
+(networking)
+  Gufasha amatsinda akora ibintu bitandukanye kubona amasoko aho bishoboka  
+gukangurira amatsinda yoroye gushyira amatungo yabo mu bwishingizi.
+  3. Gukomeza gushishikariza abafatanyabikorwa kwishakamo ibisubizo biga kandi bakora 
+imyuga iciriritse
+  4. Gukomeza kunoza imikorere n’imitangire myiza ya service
+  5. Gukomeza kubungabunga ubuzima n’imibereho myiza y’abafatanyabikorwa barindwa 
+ihohoterwa iryo ari ryose ryabakorerwa no kugira amahugurwa menshi atandukanye 
+k’urubyiruko.
+  6.  Imicungire myiza y’umutungo, abakozi n’ibintu byose bikorerwa abana bizakomeza 
+gukorwa mu bunyangamugayo 
+ 7.  Kurwanya igwingira mu miryango
+  8.Gufatanya n’inzego za Leta kubungabunga ibyotwagezeho    `},
+            {img: '<img src="zimwe.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">', text: `<img src="zimwe.npg.jpg" alt=""class="rounded-lg shadow-md w-full h-full object-cover">`},
+            {img: '', text: 'Description or details about Families Discovering and Developing Talents for Income.'},
+            {img: '', text: 'Description or details about Some Benefits of Working Together for Fast Change.'},
+            {img: '', text: 'Description or details about Some Handicraft Activities Youth Do for the Project.'},
+            {img: '', text: 'Description or details about This Family Managed to Develop.'},
+            {img: '', text: 'Description or details about Activities Helping Families Get Shelter.'},
+            {img: '', text: 'Description or details about Youth Can Sew Clean Clothes for Back Support.'},
+            {img: '', text: 'Description or details about Youth Participate in Community Work.'},
+            {img: '', text: 'Description or details about Harvests We Celebrate and Thank God For.'},
+            {img: '', text: 'Description or details about Development Activities.'},
+            {img: '', text: 'Description or details about We Have Good Times to Thank God in Church.'},
+            {img: `fic.npg.jpg`, text: 'fic.npg.jpg'},
+            {img: '', text: ` `}
+        ];
+
+        // Show detail view for a button (all buttons)
+        document.querySelectorAll('.detail-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const idx = parseInt(this.getAttribute('data-detail'));
+                const detailViews = document.getElementById('detailViews');
+                const buttonGrid = document.getElementById('buttonGrid');
+                let template = document.getElementById('detailViewTemplate');
+                if (!template) return;
+                let detail = template.cloneNode(true);
+                detail.style.display = 'flex';
+                detail.id = '';
+                detail.querySelector('#detailImg').src = detailData[idx].img;
+                // Use innerHTML for HTML tables, textContent for plain text
+                if (detailData[idx].text.trim().startsWith('<table')) {
+                    detail.querySelector('#detailText').innerHTML = detailData[idx].text;
+                } else {
+                    detail.querySelector('#detailText').textContent = detailData[idx].text;
+                }
+                detailViews.innerHTML = '';
+                detailViews.appendChild(detail);
+                buttonGrid.classList.add('hidden');
+                detailViews.classList.remove('hidden');
+                detail.querySelector('#backToGrid').onclick = function() {
+                    detailViews.classList.add('hidden');
+                    buttonGrid.classList.remove('hidden');
+                    // Re-attach button listeners when grid is shown again
+                    setTimeout(() => {
+                        document.querySelectorAll('.detail-btn').forEach(btn => {
+                            btn.onclick = null;
+                        });
+                        document.querySelectorAll('.detail-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                const idx = parseInt(this.getAttribute('data-detail'));
+                                const detailViews = document.getElementById('detailViews');
+                                const buttonGrid = document.getElementById('buttonGrid');
+                                let template = document.getElementById('detailViewTemplate');
+                                if (!template) return;
+                                let detail = template.cloneNode(true);
+                                detail.style.display = 'flex';
+                                detail.id = '';
+                                detail.querySelector('#detailImg').src = detailData[idx].img;
+                                if (detailData[idx].text.trim().startsWith('<table')) {
+                                    detail.querySelector('#detailText').innerHTML = detailData[idx].text;
+                                } else {
+                                    detail.querySelector('#detailText').textContent = detailData[idx].text;
+                                }
+                                detailViews.innerHTML = '';
+                                detailViews.appendChild(detail);
+                                buttonGrid.classList.add('hidden');
+                                detailViews.classList.remove('hidden');
+                                detail.querySelector('#backToGrid').onclick = arguments.callee;
+                            });
+                        });
+                    }, 0);
+                };
+            });
+        });
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                answer.classList.toggle('hidden');
+                if (answer.classList.contains('hidden')) {
+                    icon.classList.remove('rotate-180');
+                } else {
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // Show/hide button grid on Contact click
+        document.addEventListener('DOMContentLoaded', function() {
+            var contactBtn = document.getElementById('contactBtn');
+            var buttonGrid = document.getElementById('buttonGrid');
+            if (contactBtn && buttonGrid) {
+                contactBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    buttonGrid.classList.toggle('hidden');
+                });
+            }
+        });
+
+        // Mobile menu toggle functionality (placeholder)
+        document.querySelector('header button').addEventListener('click', function() {
+            alert("Mobile menu would expand here in a full implementation");
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.sticky-header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.classList.add('py-2');
+            } else {
+                header.classList.remove('shadow-lg');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+    
+    <!-- Form Submission Script -->
+    <script>
+        // Handle form submission
+        document.getElementById('rw0374QuestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission (in real implementation, send to server)
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').classList.remove('hidden');
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+                // Hide success message after 120 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('hidden');
+                }, 5000);
+                
+                // In real implementation, you would send data to server:
+                // fetch('/api/submit-questions', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(data)
+                // });
+            }, 1500);
+        });
+        
+        // Add smooth scroll to questions section
+        document.querySelector('a[href="#questions"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('questions').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+
+</div></body></html> 
